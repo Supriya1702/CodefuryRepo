@@ -19,6 +19,8 @@ public class Contacts implements Serializable {
     private String country;
     private String company;
     private Image contactImage;
+    private int contact_id;
+	
    
     //private int contact_id;
     public int getUniqueId() {
@@ -93,6 +95,12 @@ public class Contacts implements Serializable {
 	
 	public Image getContactImage() {
 		return contactImage;
+	}
+	public int getContact_id() {
+		return contact_id;
+	}
+	public void setContact_id(int contact_id) {
+		this.contact_id = contact_id;
 	}
 	public void setContactImage(Image contactImage) {
 		this.contactImage = contactImage;

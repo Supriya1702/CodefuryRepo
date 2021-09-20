@@ -7,6 +7,6 @@ import com.codefury.beans.Contacts;
 public interface ContactDAO {
 	int addContact(Contacts contact) throws Exception ;
 	void updateContactDetails();
-	List<Contacts> getContacts();
-	void deleteContact();
+	List<Contacts> getContacts() throws Exception;
+	void deleteContact(int contact_id) throws Exception;
 	}

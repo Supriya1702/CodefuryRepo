@@ -63,6 +63,8 @@
                 
             </table>
             <input type="submit" value="Submit" /></form>
+            <input type="submit" value="GetResults"/>
+            
     </body>
 
 </html>
