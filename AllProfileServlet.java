@@ -27,7 +27,7 @@ public class EServlet extends HttpServlet
              ResultSet rs = stmt.executeQuery("select * from user");  
              out.println("<table border=1 width=50% height=50%>"); 
              out.println("All Users");
-             out.println("<tr><th>Name</th><th>Email</th><th>Phone No.</th><th>Gender</th><th>DOB</th><th>Adddress</th><th>City</th><th>State</th><th>Country</th><th>Company</th><th>Username</th><th>Password</th><tr>");  
+             out.println("<tr><th>Name</th><th>Email</th><th>Phone No.</th><th>Gender</th><th>DOB</th><th>Adddress</th><th>City</th><th>State</th><th>Country</th><th>Company</th><th>Username</th><th</th><tr>");  
              while (rs.next()) 
              {  
                  String nam = rs.getString("fullname");  
@@ -40,9 +40,8 @@ public class EServlet extends HttpServlet
                  String st = rs.getString("state"); 
                  String cou = rs.getString("country");
                  String com = rs.getString("company"); 
-                 String un= rs.getString("username"); 
-                 String pass = rs.getString("password");
-                 out.println("<tr><td>" +nam+ "</td><td>" +em+ "</td><td>" +ph+ "</td><td>" +gen+ "</td><td>" +d+ "</td><td>" +ad+ "</td><td>" + city +"</td><td>" +st+ "</td><td>" +cou+ "</td><td>" +com+ "</td><td>" +un+ "</td><td>" +pass+ "</td></tr>");   
+                 String un= rs.getString("username");
+                 out.println("<tr><td>" +nam+ "</td><td>" +em+ "</td><td>" +ph+ "</td><td>" +gen+ "</td><td>" +d+ "</td><td>" +ad+ "</td><td>" + city +"</td><td>" +st+ "</td><td>" +cou+ "</td><td>" +com+ "</td><td>" +un+ "</td></tr>");   
              }  
              out.println("</table>");
              out.println("</html></body>");  
