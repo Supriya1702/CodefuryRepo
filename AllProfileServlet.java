@@ -26,7 +26,7 @@ public class EServlet extends HttpServlet
              Statement stmt = con.createStatement();  
              ResultSet rs = stmt.executeQuery("select * from user");  
              out.println("<table border=1 width=50% height=50%>"); 
-             out.println("PROFILE");
+             out.println("All Users");
              out.println("<tr><th>Name</th><th>Email</th><th>Phone No.</th><th>Gender</th><th>DOB</th><th>Adddress</th><th>City</th><th>State</th><th>Country</th><th>Company</th><th>Username</th><th>Password</th><tr>");  
              while (rs.next()) 
              {  
@@ -45,7 +45,6 @@ public class EServlet extends HttpServlet
                  out.println("<tr><td>" +nam+ "</td><td>" +em+ "</td><td>" +ph+ "</td><td>" +gen+ "</td><td>" +d+ "</td><td>" +ad+ "</td><td>" + city +"</td><td>" +st+ "</td><td>" +cou+ "</td><td>" +com+ "</td><td>" +un+ "</td><td>" +pass+ "</td></tr>");   
              }  
              out.println("</table>");
-             out.print("<br><a href=\"#\"><button type=\"button\">Update Details</button></a>");
              out.println("</html></body>");  
              con.close();  
             }  
