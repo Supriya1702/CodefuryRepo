@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="ContactApplication/src"/>
-	<classpathentry kind="lib" path="ContactApplication/WebContent/WEB-INF/lib/mysql-connector-java-8.0.26.jar"/>
-	<classpathentry kind="lib" path="ContactApplication/WebContent/WEB-INF/lib/protobuf-java-3.11.4.jar"/>
-	<classpathentry kind="output" path="ContactApplication/build/classes"/>
-</classpath>
