@@ -1,3 +1,8 @@
+
+body{
+	background-image: url("images/bg.jpg");
+    background-color: #cccccc;
+   }
 #userform {
     border: 1px solid #0066A2;
     width: 50%;
@@ -35,3 +40,14 @@
      padding: 5px;
       background-color:none;
     }
+    row{
+   margin-right: auto;
+    margin-left: auto;
+      }
+    .form-group{
+     margin:15px;
+    }
+    #marginLeft{
+   margin-left:15px; 
+   }
+    
