@@ -8,8 +8,7 @@
 <script type = "text/javascript" 
 src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 </script>
-<link rel="stylesheet" href="/css/registrationStyles.css">
-
+<link rel="stylesheet" type="text/css" href="css/registrationStyles.css">  
 </head>
 <body>
 
@@ -36,6 +35,6 @@ src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 ${ message }
 </form>
  
- <script src="/js/registrationValidations.js"></script>
+<script src="js/registrationValidations.js"></script> 
 </body>
 </html> 
