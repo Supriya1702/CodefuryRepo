@@ -57,7 +57,7 @@ public class RegistrationDao implements RegistrationDaoInterface {
 		Connection c=a.createConnection();
 		PreparedStatement p;
 		try {
-			p = c.prepareStatement("select id from user where email = ? and password = ?");
+			p = c.prepareStatement("select * from user where email = ? and password = ?");
 			p.setString(1, u.getEmail());
 			p.setString(2,u.getPassword());
 			
@@ -65,8 +65,20 @@ public class RegistrationDao implements RegistrationDaoInterface {
 			
 			if(rs.next()) {
 				User res = new User();
-				u.setId(rs.getInt(1));
-				System.out.println(u.getId());
+				res.setId(rs.getInt(1));
+				res.setName(rs.getString(2));
+				res.setEmail(rs.getString(3));
+				res.setPhoneno(rs.getLong(4));
+				res.setGender(rs.getString(5));
+				res.setDob(rs.getDate(6));
+				res.setAddress(rs.getString(7));
+				res.setCity(rs.getString(8));
+				res.setState(rs.getString(9));
+				res.setCountry(rs.getString(10));
+				res.setCompany(rs.getString(11));
+				res.setUsername(rs.getString(13));
+				res.setPassword(rs.getString(14));;
+				System.out.println(res.toString());
 				return res;
 			}
 		} 

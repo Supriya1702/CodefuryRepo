@@ -39,10 +39,11 @@ public class LoginServlet extends HttpServlet {
 		User res=ud.loginUserDao(u);
 		if(res!=null) {
 			HttpSession session = request.getSession(true);
-			session.setAttribute("id",u.getId());
+			session.setAttribute("id",res.getId());
 			
 			System.out.println("user id " + session.getAttribute("id"));
-			
+			System.out.println(res.getDob());
+			request.setAttribute("User",res);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/MainPage.jsp");
 			rd.forward(request, response);
 		}

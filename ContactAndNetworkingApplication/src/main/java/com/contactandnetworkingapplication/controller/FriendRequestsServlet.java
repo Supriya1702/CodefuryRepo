@@ -49,7 +49,7 @@ public class FriendRequestsServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 			else {
-				request.setAttribute("message","No friend request to show.");
+				request.setAttribute("message","No friend requests to show.");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequests.jsp");
 				rd.forward(request, response);
 			}
@@ -78,6 +78,51 @@ public class FriendRequestsServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 			
+		}
+		else if(option.equals("ignore")) {
+			FriendRequestsDaoInterface ud = DaoFactory.createFriendRequestsObject();
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			FriendRequest f = new FriendRequest();
+			f.setFriend_request_pk(id);
+                
+			System.out.println(f.getFriend_request_pk());
+			int res=ud.ignoreFriendRequestDao(f);
+			
+			if(res==1) {
+				request.setAttribute("message","Friend Request ignored");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequestsServlet?option=view");
+				rd.forward(request, response);
+			}
+			else {
+				request.setAttribute("message","Was unable to ignore Friend Request. Please try again.");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequestsServlet?option=view");
+				rd.forward(request, response);
+			}
+		}
+		else if(option.equals("block")) {
+			FriendRequestsDaoInterface ud = DaoFactory.createFriendRequestsObject();
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			int sender_id = Integer.parseInt(request.getParameter("sender_id"));
+			int receiver_id = Integer.parseInt(request.getParameter("receiver_id"));
+			FriendRequest f = new FriendRequest();
+			f.setFriend_request_pk(id);
+			f.setSender_id(sender_id);
+			f.setReceiver_id(receiver_id);
+			System.out.println(f.getFriend_request_pk() + " " + f.getSender_id() + " " + f.getReceiver_id());
+			int res=ud.blockFriendRequestDao(f);
+			
+			if(res==1) {
+				request.setAttribute("message","User blocked");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequestsServlet?option=view");
+				rd.forward(request, response);
+			}
+			else {
+				request.setAttribute("message","Was unable to block. Please try again.");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequestsServlet?option=view");
+				rd.forward(request, response);
+			}
 		}
 	}
 

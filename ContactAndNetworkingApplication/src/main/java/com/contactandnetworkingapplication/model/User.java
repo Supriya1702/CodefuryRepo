@@ -3,6 +3,7 @@ package com.contactandnetworkingapplication.model;
 import java.sql.Date;
 
 public class User {
+	
 	int id;
 	String name;
 	String email;
@@ -95,5 +96,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phoneno=" + phoneno + ", gender=" + gender
+				+ ", dob=" + dob + ", address=" + address + ", city=" + city + ", state=" + state + ", country="
+				+ country + ", company=" + company + ", username=" + username + ", password=" + password + "]";
+	}
 }

@@ -16,7 +16,7 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 	public List<FriendRequest> viewFriendRequestsDao(User u) {
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
-		PreparedStatement p;
+		PreparedStatement p=null;
 		List<FriendRequest> list = new ArrayList<FriendRequest>();
 		try {
 			p = c.prepareStatement("select f.friend_request_pk,f.receiver_id,f.sender_id,f.sender_name f from friendrequest f join user u on f.receiver_id=u.id where receiver_id=?;");
@@ -59,7 +59,7 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 		catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		PreparedStatement p;
+		PreparedStatement p=null;
 		int res1=0,res2=0;
 		try {
 			p = c.prepareStatement("delete from friendrequest where friend_request_pk=?");
@@ -68,6 +68,74 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 			res1 = p.executeUpdate();
 			if(res1==1) {
 				p=c.prepareStatement("insert into friends(user_id,friend_id) values(?,?)");
+				p.setInt(1, f.getReceiver_id());
+				p.setInt(2, f.getSender_id());
+				
+				res2=p.executeUpdate();
+			}
+			if(res1==1 && res2==1)
+				return res2;
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				c.commit();
+				c.close();
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return res2;
+	}
+
+	@Override
+	public int ignoreFriendRequestDao(FriendRequest f) {
+		int res=0;
+		ConnectionUtil a = new ConnectionUtil();
+		Connection c=a.createConnection();
+		PreparedStatement p=null;
+		try {
+			p = c.prepareStatement("delete from friendrequest where friend_request_pk=?");
+			p.setInt(1,f.getFriend_request_pk());
+			
+			res = p.executeUpdate();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				c.close();
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return res;
+	}
+
+	@Override
+	public int blockFriendRequestDao(FriendRequest f) {
+		ConnectionUtil a = new ConnectionUtil();
+		Connection c=a.createConnection();
+		try {
+			c.setAutoCommit(false);
+		} 
+		catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		PreparedStatement p=null;
+		int res1=0,res2=0;
+		try {
+			p = c.prepareStatement("delete from friendrequest where friend_request_pk=?");
+			p.setInt(1,f.getFriend_request_pk());
+			
+			res1 = p.executeUpdate();
+			if(res1==1) {
+				p=c.prepareStatement("insert into blockedusers(user_id,blocked_id) values(?,?)");
 				p.setInt(1, f.getReceiver_id());
 				p.setInt(2, f.getSender_id());
 				

@@ -11,4 +11,8 @@ public interface FriendRequestsDaoInterface {
 
 	int acceptFriendRequestDao(FriendRequest f);
 
+	int ignoreFriendRequestDao(FriendRequest f);
+
+	int blockFriendRequestDao(FriendRequest f);
+
 }
