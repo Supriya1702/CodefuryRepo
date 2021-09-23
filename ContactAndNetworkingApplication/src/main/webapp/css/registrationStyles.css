@@ -1,0 +1,53 @@
+
+body{
+	background-image: url("images/bg.jpg");
+    background-color: #cccccc;
+   }
+#userform {
+    border: 1px solid #0066A2;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    top: 15%;
+    }
+	.blue-btn
+      { 
+		 background:#0066A2;
+         color:white;
+         border-style:outset;
+         border-color:#0066A2;
+         height:30px;
+         width:100px;
+         font:bold 15px arial,sans-serif;
+         text-shadow:none;
+		}
+
+    .custom-file-upload{
+    display: inline-block;
+    cursor: pointer;
+	
+	 }
+	 table, th, td {
+          
+        }
+	#registrationTb{
+		width: 70%;
+		position: relative;
+	}
+    
+     th, td {
+     font-size: 18px;;
+     padding: 5px;
+      background-color:none;
+    }
+    row{
+   margin-right: auto;
+    margin-left: auto;
+      }
+    .form-group{
+     margin:15px;
+    }
+    #marginLeft{
+   margin-left:15px; 
+   }
+    

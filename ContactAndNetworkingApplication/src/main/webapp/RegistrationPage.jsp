@@ -3,39 +3,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <title>User Registration</title>
-<script type = "text/javascript" 
-src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-</script>
-<link rel="stylesheet" href="/css/registrationStyles.css">
-
+<link rel="stylesheet" type="text/css" href="css/registrationStyles.css">  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+body{
+	background-image: url("images/bg.jpg");
+    background-color: #cccccc;
+   }
+   label{
+   color:#0066A2;
+   }
+</style>
 </head>
 <body>
 
-<form id="userform" onsubmit="return validateform()" action="RegistrationServlet" method="post">
-	<h1 style="text-align:center">Registration Form</h1>
+<div class="container" style="width:100%; height:70% ;opacity:0.9;">
+       <div class="row col-md-7 col-md-offset-3">
 
-	<table style="margin: 0 auto; " id="registrationTb" >
-		<tr><td>Full Name</td><td><input type = "text" name="name" placeholder="Enter full name"  id="fullNameId" required  pattern=".{6,}" required title="6 characters minimum"></td></tr>
-		<tr><td>Email</td><td><input type = "email" name="email" placeholder="Enter email"  id="emailId" required  ></td></tr>
-		<tr><td>Phone Number</td><td><input type = "number" name="phoneno" placeholder="Enter contact number"  id="phoneNumberId"  required maxlength="10" pattern=".{10}"  title="10 digits only"></td></tr>
-		<tr><td>Gender</td><td><input type = "text" name="gender" placeholder="Enter gender"  id="genderId" required></td></tr>
-		<tr><td>Date of Birth</td><td><input type = "date" name="dob" placeholder="Enter date of birth"  id="dobId" required ></td></tr>
-		<tr><td>Address</td><td><textarea  placeholder="Enter address" name="address"  id="addressId" required pattern=".{10,40}" title="Enter 10-40 characters"></textarea></td></tr>
-		<tr><td>City</td><td><input type = "text" placeholder="City" name="city" id="cityId" required   pattern=".{3,}"  title="3 characters minimum" ></td></tr>
-		<tr><td>State</td><td><input type = "text" placeholder="State" name="state" id="stateId" required pattern=".{3,}"  title="3 characters minimum"></td></tr>
-		<tr><td>Country</td><td><input type = "text" placeholder="Country" name="country" id="countryId"required pattern=".{3,}"  title="3 characters minimum"></td></tr>
-		<tr><td>Company</td><td><input type = "text" placeholder="Enter the company name" name="company" id="companyId"required  pattern=".{2,}"  title="2 characters minimum"></td></tr>
-		<tr><td>Upload Profile Image</td><td><input type = "file" placeholder="Photo" name="profileimage"  id="profileImageId" class="custom-file-upload" ></td></tr>
-		<tr><td>User Name</td><td><input type = "text" placeholder="Enter user name" name="username" id="usernameId" required pattern=".{6,}"  title="6 characters minimum" ></td></tr>
-		<tr><td>Password</td><td><input type = "password" placeholder="Enter password" name="password"  id="passwordId" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Include one uppercase,lowercase and digit"></td></tr>
-		<tr><td>Confirm Password</td><td><input type = "password" placeholder="Confirm password"  id="confirmPasswordId" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Include one uppercase, lowercase and digit"></td></tr>
-		<tr><td style="display:table-cell;" ></td><td  ><input type="submit"  id="registerBtn" value="Register" class="blue-btn"></input></td></tr>
-</table>
-${ message }
-</form>
- 
- <script src="/js/registrationValidations.js"></script>
+        <div class="panel panel-primary" style="margin-top:50px; margin-bottom:50px;">
+           <div class="panel-heading text-center" style="margin-top:5px;">
+               <h1>Registration Form</h1>
+           </div>
+           <div class="panel-body">
+            <form id="userform" style="width:100%; margin:5px;" onsubmit="return validateform()" action="RegistrationServlet" method="post">
+              
+
+                <div class="form-group">
+                    <label for="fullNameId">Full Name</label>
+                    <input type = "text" name="name" placeholder="Enter full name"  id="fullNameId" class="form-control" required  pattern=".{6,}"  title="6 characters minimum">
+                </div>
+              
+              <div class="row">
+              
+              <div class="col-md-6 mb-4" id="marginLeft" >
+                <label for="emailId">Email</label>
+                <input type = "email" name="email" placeholder="Enter email"  id="emailId" class="form-control" required title="someone@example.com" >
+            </div>
+            <div class="col-md-5 mb-4" style="width:45%;">
+                <label for="phoneNumberId">Phone Number</label>
+                <input type = "text" name="phoneno" placeholder="Enter contact number"  id="phoneNumberId" class="form-control" required maxlength="10" pattern=".{10}"  title="10 digits only">
+            </div>
+        </div>
+          
+            <div class="row">
+                
+                <div class="col-md-6 mb-4" id="marginLeft">
+                <label for="genderId">Gender</label> <br>
+                <select class="gender" required class="form-control" name="gender" style="width: 100%; height: 55%;">
+                    <option value="">None</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+               
+                <div class="col-md-5 mb-4" style="width:45%;">
+                    <label for="dobId">Date Of Birth</label>
+                    <input type = "date" name="dob" placeholder="Enter date of birth"  id="dobId" class="form-control" required >
+                </div>
+
+            </div>
+          
+            <div class="form-group">
+                <label for="addressId">Address</label>
+                <textarea  placeholder="Enter address" name="address"  id="addressId" class="form-control" required pattern=".{10,40}" title="Enter 10-40 characters"></textarea>
+            </div>
+     
+     
+           <div class="row">
+            <div class="col-md-6 mb-4" id="marginLeft">
+                <label for="cityId">City</label>
+                <input type = "text" placeholder="City" name="city" id="cityId" class="form-control" required   pattern=".{3,}"  title="3 characters minimum" >
+            </div>
+
+            <div class="col-md-5 mb-4" style="width:45%;" >
+                <label for="stateId">State</label>
+                <input type = "text" placeholder="State" name="state" id="stateId" class="form-control" required pattern=".{3,}"  title="3 characters minimum">
+            </div>
+           
+        </div>
+        
+        
+        <div class="row">
+        <div class="col-md-6 mb-4" id="marginLeft">
+            <label for="countryId">Country</label>
+            <input type = "text" placeholder="Country" name="country" id="countryId" class="form-control" required pattern=".{3,}"  title="3 characters minimum">
+        </div>
+            <div class="col-md-5 mb-4" style="width:45%;">
+                <label for="companyId">Company</label>
+                <input type = "text" placeholder="Enter the company name" name="company" id="companyId" class="form-control" required  pattern=".{2,}"  title="2 characters minimum">
+            </div>
+        </div>
+             
+             
+            <div class="form-group">
+                <label for="usernameId">Username</label>
+                <input type = "text" placeholder="Enter user name" name="username" id="usernameId" class="form-control" required pattern=".{6,}"  title="6 characters minimum" >
+            </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4" id="marginLeft">
+                <label for="passwordId">Password</label>
+                <input type = "password" placeholder="Enter password" name="password"  id="passwordId" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Include one uppercase,lowercase and digit">
+            </div>
+            <div class="col-md-5 mb-4" style="width:45%;">
+                <label for="confirmPasswordId">Confirm Password</label>
+                <input type = "password" placeholder="Confirm password"  id="confirmPasswordId" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Include one uppercase, lowercase and digit">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <input type="submit"  id="registerBtn" value="Register" class="btn btn-primary"></input>
+            <div style="float: right;"> ${ message }</div>
+        </div>
+        
+         </form>
+         
+           </div>
+           <div class="panel-footer text-right">
+             <small>&copy; CodeFury App Monsters</small> 
+           </div>
+
+        </div>
+
+       </div>
+
+    </div>
+   
+
+<script src="js/registrationValidations.js"></script> 
 </body>
 </html> 
