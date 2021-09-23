@@ -13,23 +13,23 @@ import com.contactandnetworkingapplication.model.User;
 public class FriendDao implements FriendDaoInterface {
 
 	@Override
-	public List<Friend> viewFriendsDao(User u) {
+	public List<User> viewFriendsDao(User u) {
 		ConnectionUtil c = new ConnectionUtil();
 		Connection conn = c.createConnection();
 		PreparedStatement p=null;
-		List<Friend> list = new ArrayList<Friend>();
-		String sql="select u.id,u.fullname from user u where u.id in (select friend_id  from friends where user_id = ?) or id in (select user_id  from friends where friend_id = ?);";
+		List<User> list = new ArrayList<User>();
+		String sql="select u.id,u.fullname from user u where u.id in (select friend_id  from friends where user_id = ?) or u.id in (select user_id  from friends where friend_id = ?);";
 		try {
 			p = conn.prepareStatement(sql);
 			p.setInt(1, u.getId());
+			p.setInt(2, u.getId());
 			ResultSet rs = p.executeQuery();
 			while(rs.next()) {
-				Friend res = new Friend();
-				res.setUser_id(rs.getInt(1));
-				res.setFriend_id(rs.getInt(2));
-				res.setFriend_pk(rs.getInt(3));
+				User res = new User();
+				res.setId(rs.getInt(1));
+				res.setName(rs.getString(2));
 				
-				System.out.println(res.getFriend_id() + " " + res.getUser_id() + " " + res.getFriend_pk());
+				System.out.println(res.getId() + " " + res.getName());
 				list.add(res);
 			}
 			return list;
@@ -56,22 +56,30 @@ public class FriendDao implements FriendDaoInterface {
 			e.printStackTrace();
 		}
 		PreparedStatement p = null;
-		int res1=0;
+		int res=0;
 		try {
-			p = con.prepareStatement("delete from friends where friend_pk=?");
+			p = con.prepareStatement("delete from friends where (user_id=? and friend_id=?) or (user_id=? and friend_id=?)");
+			p.setInt(1, f.getUser_id());
+			p.setInt(2, f.getFriend_id());
+			p.setInt(3, f.getFriend_id());
+			p.setInt(4, f.getUser_id());
+			res=p.executeUpdate();
 			
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		}
+		finally {
 			try {
 				con.commit();
 				con.close();
-			} catch (SQLException e) {
+			} 
+			catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
-		return res1;
+		return res;
 	}
 	
 }

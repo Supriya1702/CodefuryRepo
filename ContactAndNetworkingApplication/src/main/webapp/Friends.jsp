@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.util.ArrayList" %>
-<%@page import="com.contactandnetworkingapplication.model.Friend"%>
+<%@page import="com.contactandnetworkingapplication.model.User"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -11,23 +11,22 @@
 <title>Friends</title>
 </head>
 <body>
-	<h1> Friends</h1>
+	<h1> Friends list</h1>
 	
 	<% 
-		List<Friend> list = (List<Friend>)request.getAttribute("list");
+		List<User> list = (List<User>)request.getAttribute("list");
 		String message = (String)request.getAttribute("message");
 		if(list!=null) {%>
 			<center>
 			<table border="5px">
-	<%			for(Friend u : list) {
+	<%			for(User u : list) {
 	%>
-				<c:url var="accept" value="FriendServlet">
+				<c:url var="remove" value="FriendServlet">
   						<c:param name="option" value="remove"></c:param>
-  						<c:param name="id" value="<%=Integer.toString(u.getFriend_pk()) %>"></c:param>
-  						<c:param name="friend_id" value="<%=Integer.toString(u.getFriend_id()) %>"></c:param>
+  						<c:param name="friend_id" value="<%=Integer.toString(u.getId()) %>"></c:param>
 				</c:url>
-				<tr><td></td>
-					<td><input type="button" onclick="window.location.href='${remove}'" value="Remove"><td/>
+				<tr><td><%= u.getName() %></td>
+					<td><input type="button" onclick="window.location.href='${remove}'" value="Unfriend"><td/>
 				</tr>
 	<% 		} %>
 			</table>
