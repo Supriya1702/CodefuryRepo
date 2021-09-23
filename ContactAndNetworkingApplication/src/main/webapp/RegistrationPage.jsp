@@ -56,7 +56,7 @@ body{
                 
                 <div class="col-md-6 mb-4" id="marginLeft">
                 <label for="genderId">Gender</label> <br>
-                <select class="gender" required class="form-control" style="width: 100%; height: 55%;">
+                <select class="gender" required class="form-control" name="gender" style="width: 100%; height: 55%;">
                     <option value="">None</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>

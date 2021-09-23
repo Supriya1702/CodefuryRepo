@@ -52,13 +52,14 @@ body{
           
        </div>
          <div >&nbsp;</div>
-          <div class="panel-footer text-right">
+         
+	     <div class="panel-footer text-right">
              <small>&copy; CodeFury App Monsters</small> 
            </div>
-	    
 	  </div>
 	
 	</div>
+	
 	</div>
 	 <div >${ message }</div>
 </body>
