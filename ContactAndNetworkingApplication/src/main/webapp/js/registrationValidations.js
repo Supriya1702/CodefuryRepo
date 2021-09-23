@@ -39,10 +39,41 @@
         else
         return true;
     }
+    
+
+    function underAgeValidate(dateString) {
+        var dateString = $('#dobId').val();
+        var dates = dateString.split("-");
+        var d = new Date();
+
+        var userday = dates[2];
+        var usermonth = dates[1];
+        var useryear = dates[0];
+
+        var curday = d.getDate();
+        var curmonth = d.getMonth()+1;
+        var curyear = d.getFullYear();
+
+        var age = curyear - useryear;
+
+        if((curmonth < usermonth) || ( (curmonth == usermonth) && curday < userday   )){
+
+            age--;
+
+        }
+        
+        if(age < 18) {
+   		 alert("Age must be at least 18 years!");
+        	    return false;
+           }
+        else{
+   	    return true;
+   	}
+    }
 
     function validateform(){
 
-       if( checkPass() && validateAddress())
+       if( checkPass() && validateAddress() && underAgeValidate())
            return true;
 
        else
