@@ -90,7 +90,7 @@
 		<div class="card">
 			<img src="https://icon-library.com/images/connect-icon-png/connect-icon-png-18.jpg" style="width:20%","height:20%" class="card_image">
 			<div class="content">
-				<a href="FriendServlet?option=view">View Friends</a>
+				<a href="/FriendServlet?option=view">View Friends</a>
 			</div>
 		</div>
 		</td>

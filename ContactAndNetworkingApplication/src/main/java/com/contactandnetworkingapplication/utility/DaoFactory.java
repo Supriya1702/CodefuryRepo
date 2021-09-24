@@ -1,5 +1,7 @@
 package com.contactandnetworkingapplication.utility;
 
+import com.contactandnetworkingapplication.dao.AdminDAO;
+import com.contactandnetworkingapplication.dao.AdminDaoInterface;
 import com.contactandnetworkingapplication.dao.FriendDao;
 import com.contactandnetworkingapplication.dao.FriendDaoInterface;
 import com.contactandnetworkingapplication.dao.FriendRequestsDao;
@@ -22,5 +24,7 @@ public class DaoFactory {
 	public static FriendDaoInterface createFriend() {
 		return new FriendDao();
 	}
-	
+	public static AdminDaoInterface createAdminObject() {
+		return new AdminDAO();
+	}
 }

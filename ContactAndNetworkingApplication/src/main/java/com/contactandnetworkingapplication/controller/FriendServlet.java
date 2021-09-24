@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.contactandnetworkingapplication.dao.FriendDaoInterface;
-import com.contactandnetworkingapplication.model.Friend;
-import com.contactandnetworkingapplication.model.FriendRequest;
 import com.contactandnetworkingapplication.model.User;
 import com.contactandnetworkingapplication.utility.DaoFactory;
 
@@ -30,54 +28,25 @@ public class FriendServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String option = request.getParameter("option");
-		System.out.println(option);
-		if(option.equals("view")) {
-			FriendDaoInterface ud = DaoFactory.createFriend();
-			
-			HttpSession session = request.getSession(true);
-			int id=(int) session.getAttribute("id");
-			User u = new User();
-			u.setId(id);
-			System.out.println("user id a ");
-			List<User> list=ud.viewFriendsDao(u);
-			
-			if(list!=null && list.size()>0) {
-				request.setAttribute("list",list);
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
-				rd.forward(request, response);
-			}
-			else {
-				request.setAttribute("message","No friends to show.");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
-				rd.forward(request, response);
-			}
+		FriendDaoInterface ud = DaoFactory.createFriend();
+		
+		HttpSession session = request.getSession(true);
+		int id=(int) session.getAttribute("id");
+		User u = new User();
+		u.setId(id);
+		System.out.println("user id " + session.getAttribute("id"));
+		List<User> list=ud.friendDao(u);
+		
+		if(list.size()>0) {
+			request.setAttribute("list",list);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
+			rd.forward(request, response);
 		}
-		else if(option.equals("remove")){
-			HttpSession session = request.getSession(true);
-			int id=(int) session.getAttribute("id");
-	
-			FriendDaoInterface ud = DaoFactory.createFriend();
-			int friend_id = Integer.parseInt(request.getParameter("friend_id"));
-			Friend f = new Friend();
-			f.setFriend_id(friend_id);
-			f.setUser_id(id);
-			    
-			System.out.println(f.getUser_id() + " "+ f.getFriend_id());
-			int res=ud.removeFriend(f);
-			
-			if(res==1) {
-				request.setAttribute("message","Friend Removed");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendServlet?option=view");
-				rd.forward(request, response);
-			}
-			else {
-				request.setAttribute("message","Was unable to Remove Friend. Please try again.");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendServlet?option=view");
-				rd.forward(request, response);
-			}
+		else {
+			request.setAttribute("message","No friends to show.");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
+			rd.forward(request, response);
 		}
-		//System.out.println("fsdfds");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
