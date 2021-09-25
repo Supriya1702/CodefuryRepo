@@ -60,7 +60,7 @@
 		<div class="card">
 			<img src="https://cdn0.iconfinder.com/data/icons/business-dual-color-glyph-set-2/128/Address_book-512.png" style="width:20%","height:20%" class="card_image">
 			<div class="content">
-				<a href="#">View Contacts</a>
+				<a href="ContactDetailsJsp.jsp">View Contacts</a>
 			</div>
 		</div>
 		</td>
@@ -69,7 +69,7 @@
 		<div class="card">
 			<img src="https://cdn2.iconfinder.com/data/icons/bussiness-management-supersolid/24/add_add_contact_create_new_person_user_add_friend-512.png" style="width:25%","height:10%" class="card_image">
 			<div class="content">
-				<a href="#">Add New Contact</a>
+				<a href="AddContactJsp.jsp">Add New Contact</a>
 			</div>
 		</div>
 		</td>
