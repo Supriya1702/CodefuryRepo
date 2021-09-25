@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+body {
+ background-image: url("imagecon/h8.jpg") ;
+  background-size: cover;
+ color:white;
+ margin-left:900px;
+}
+form{
+	color:#ADD8E6;
+	font-size:20px;
+	line-height: 30px;
+}
+a{
+	color:#ADD8E6;
+}
