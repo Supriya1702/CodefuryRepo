@@ -3,9 +3,10 @@ package com.contactandnetworkingapplication.model;
 import java.awt.Image;
 import java.io.Serializable;
 import java.sql.Date;
-
-public class Contacts implements Serializable {
+//Creating bean class for Contacts
+public class Contacts implements Serializable {  
 	
+	//Intializing variables to store data from database.
 	private static final long serialVersionUID = 1L;
 	private int uniqueId;
     private String fullName;
@@ -21,8 +22,7 @@ public class Contacts implements Serializable {
     private Image contactImage;
     private int contact_id;
 	
-   
-    //private int contact_id;
+   //initializing getters and setters
     public int getUniqueId() {
 		return uniqueId;
 	}
@@ -60,7 +60,12 @@ public class Contacts implements Serializable {
 	public void setDateOfBirth(String dateOfBirth) {
 		//DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		
+		//converting date string to sql date value.
+		if(dateOfBirth.equals("Not Found!")) {  
+			this.dateOfBirth=null;
+		}else {
 		this.dateOfBirth = java.sql.Date.valueOf(dateOfBirth);
+		}
 	}
 	public String getAddress() {
 		return address;
