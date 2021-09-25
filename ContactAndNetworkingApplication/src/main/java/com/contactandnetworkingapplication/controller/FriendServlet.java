@@ -31,7 +31,7 @@ public class FriendServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String option = request.getParameter("option");
-		
+		System.out.println(option);
 		if(option.equals("view")) {
 			FriendDaoInterface ud = DaoFactory.createFriend();
 			
@@ -39,10 +39,10 @@ public class FriendServlet extends HttpServlet {
 			int id=(int) session.getAttribute("id");
 			User u = new User();
 			u.setId(id);
-			System.out.println("user id " + session.getAttribute("id"));
-			List<Friend> list=ud.viewFriendsDao(u);
+			System.out.println("user id a ");
+			List<User> list=ud.viewFriendsDao(u);
 			
-			if(list.size()>0) {
+			if(list!=null && list.size()>0) {
 				request.setAttribute("list",list);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
 				rd.forward(request, response);
@@ -52,13 +52,18 @@ public class FriendServlet extends HttpServlet {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
 				rd.forward(request, response);
 			}
-		}else if(option.equals("remove")){
+		}
+		else if(option.equals("remove")){
+			HttpSession session = request.getSession(true);
+			int id=(int) session.getAttribute("id");
+	
 			FriendDaoInterface ud = DaoFactory.createFriend();
-			int id = Integer.parseInt(request.getParameter("id"));
+			int friend_id = Integer.parseInt(request.getParameter("friend_id"));
 			Friend f = new Friend();
-			f.setFriend_pk(id);
-                
-			System.out.println(f.getFriend_pk());
+			f.setFriend_id(friend_id);
+			f.setUser_id(id);
+			    
+			System.out.println(f.getUser_id() + " "+ f.getFriend_id());
 			int res=ud.removeFriend(f);
 			
 			if(res==1) {
@@ -72,6 +77,7 @@ public class FriendServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
+		//System.out.println("fsdfds");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

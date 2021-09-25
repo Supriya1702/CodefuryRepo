@@ -6,6 +6,6 @@ import com.contactandnetworkingapplication.model.Friend;
 import com.contactandnetworkingapplication.model.User;
 
 public interface FriendDaoInterface {
-	List<Friend> viewFriendsDao(User u);
+	List<User> viewFriendsDao(User u);
 	int removeFriend(Friend f);
 }

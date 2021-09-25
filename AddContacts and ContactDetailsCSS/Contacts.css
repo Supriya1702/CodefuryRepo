@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+body {
+ background-image: url("imagecon/c4.jpg") ;
+ color:white;
+ margin-left:130px;
+ margin-top:60px;
+ line-height: 40px;
+}
