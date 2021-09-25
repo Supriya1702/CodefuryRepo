@@ -37,6 +37,15 @@ public class AdminServlet extends HttpServlet {
 		if(option.equals("disabled")) {
 			HashMap<Integer, String> hp = a.getDisabledUsers();
 			request.setAttribute("info",hp);
+			String message = null;
+			message = (String)request.getAttribute("message");
+			System.out.println("message  " + message);
+			if(message == null && hp.size() == 0) {
+				System.out.println("In here");
+				message = "No Users to Disable";
+			}		
+			System.out.println("message1  " + message);
+			request.setAttribute("message", message);
 			System.out.println("Size : " + hp.size());
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/DisabledPage.jsp");
 			rd.forward(request, response);

@@ -12,8 +12,7 @@
 		<% 
 			HashMap <Integer , String> hp = (HashMap <Integer , String>)request.getAttribute("info");
 			String message = (String)request.getAttribute("message");
-			if(hp != null){
-				out.println("In the if akakukaksaka" + hp.size());
+			if(hp.size() != 0){
 				%>
 				<center>
 				<table border="5px">
@@ -38,6 +37,7 @@
 		 	
 		%>
 		<h4><%=message  %></h4>
+		<!-- <a href = "AdminPage.jsp"> Go Back </a> -->
 	<% }
 	%>
 </body>

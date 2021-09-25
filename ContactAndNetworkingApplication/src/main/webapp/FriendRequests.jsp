@@ -12,6 +12,12 @@
 </head>
 <body>
 	<h1> Pending Friend Requests</h1>
+	<c:url var="logout" value="Logout.jsp">
+	</c:url>
+	<div align="right">
+	<input type="button" value = "Profile"/>
+	<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
+	</div>
 	
 	<% 
 		List<FriendRequest> list=(List<FriendRequest>)request.getAttribute("list");
