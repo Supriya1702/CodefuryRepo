@@ -1,119 +1,98 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%-- <%@page import="net.javaguides.jsp.jdbc.database.*"%> --%>
 <%@page import="com.contactandnetworkingapplication.dao.ContactDAOImpl" %>
 <%@page import="com.contactandnetworkingapplication.model.Contacts" %>
 <%@page import="java.util.List" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="com.contactandnetworkingapplication.controller.AddContact"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>ContatcDetails</title>
-
 </head>
 
 <body>
 
-
  <jsp:useBean id="contact" class="com.contactandnetworkingapplication.model.Contacts" />
   <%
-    //HttpSession session = request.getSession(true);
 	int id=(int) session.getAttribute("id");
-	//User u = new User();
-	//u.setId(id);
-	System.out.println("user id a "+ id);
 	
   	ContactDAOImpl contactdaoImpl = new ContactDAOImpl();
-  List<Contacts> contactList = new ArrayList<>();
-  contactList= contactdaoImpl.getContacts(id);
-  //out.println("<H3>My Contact List</h3>");
+    List<Contacts> contactList = new ArrayList<>();
+    contactList= contactdaoImpl.getContacts(id);
   %>
   
   <c:url var="delContacts" value="AddContact">
   <c:param name="option" value="delete"></c:param>
   <c:param name="listContact2" ></c:param>
-				</c:url>
+  </c:url>
 	
+<div class="allContacts">
   <H3>My Contact List</h3>
-  
   <table>
   <tr>
-  		
   		<th>Name</th>
   		<th>Email</th>
   		<th>Select</th>
-  		<!-- <th>View</th> -->
   	</tr>
   	
   <% 
-  
   for (Contacts c :contactList){
-	 // System.out.println(c.getFullName());
-	 String butId="but"+c.getContact_id();
+	 String butId="buttonId"+c.getContact_id();
 	  %>
 	  <tr>
 	  		<td><%= c.getFullName()%></td>
-	  		<td><%=c.getEmail()%></td>
-	  		
+	  		<td><%= c.getEmail()%></td>
 	  		<td><input type="checkbox" id ="chbox" class ="selectedContact" onclick="deleteContact()" value=<%=  c.getContact_id() %>></td>
 	  		<td><button id="<%= butId %>" onclick="showDetails(<%= c.getContact_id() %>)">View Details</button></td>
 	  	</tr>	
 	  	<tr  colspan=4 style="display:none" id=<%= c.getContact_id() %>>
-	  		<td></td><!-- <span id=></span> -->
+	  		<td></td>
 			<td >
 			<ul >
-			<li><B>Phone No: </B><%= c.getPhone_no()%></li>
-	  		<li><B>gender: </B><%=c.getGender()%></li>
-	  		<li><B>dateOfBirth: </B><%=c.getDateOfBirth()%></li>
-	  		<li><B>Address: </B><%=c.getAddress()%></li>
-	  		<li><B>city: </B><%=c.getCity()%></li>
-	  		<li><B>state: </B><%=c.getState()%></li>
-	  		<li><B>country: </B><%=c.getCountry()%></li>
-	  		<li><B>company: </B><%=c.getCompany()%></li>
+			<li><B>Phone No: </B><%= (c.getPhone_no().equals("")) ? "Not Available" :  c.getPhone_no() %></li>
+	  		<li><B>gender: </B><%= (c.getGender().equals("")) ? "Not Available" :c.getGender() %></li>
+	  		<li><B>dateOfBirth: </B><%= (c.getDateOfBirth()==null) ? "Not Available" :c.getDateOfBirth()%></li>
+	  		<li><B>Address: </B><%= (c.getAddress().equals("")) ? "Not Available" :c.getAddress()%></li>
+	  		<li><B>city: </B><%= (c.getCity().equals("")) ? "Not Available" :c.getCity()%></li>
+	  		<li><B>state: </B><%= (c.getState().equals("")) ? "Not Available" :c.getState()%></li>
+	  		<li><B>country: </B><%= (c.getCountry().equals("")) ? "Not Available" :c.getCountry()%></li>
+	  		<li><B>company: </B><%= (c.getCompany().equals("")) ? "Not Available" :c.getCompany()%></li>
 	  		</ul>
 	  		</td>
-	  		<%-- <td><B>contactImage: </B><%=c.getContactImage()%></td> --%>
-	  		
-	  		
 	  	</tr>
-	  	
 	  <% 
-	  //out.print(c.getFullName()+ " - "+c.getEmail()+"<br>");
   }
   	%>
   	
-  	
-  	</table>
-  	<form action="DeleteContact" method="post">
-  <input type="text" style="display:none" name="labelcon" id="labelcon" value="0" ></label>
+  </table>
+  <form action="DeleteContact" method="post">
+    <input type="text" style="display:none" name="labelcon" id="labelcon" value="0" ></label>
   	<button  type="submit" >Delete Selected</button>
   	</form>
+  	
+  </div>
 
  <jsp:setProperty property="*" name="contact" />
- 
  <script> function showDetails(contact_id){
 	console.log("in showDetails");
 	if(document.getElementById(contact_id).style.display=="none"){
 		document.getElementById(contact_id).style.display="block";
-		//this.value="Hide Details";
-		document.getElementById("but"+contact_id).innerText="Hide Details";
+		document.getElementById("buttonId"+contact_id).innerText="Hide Details";
 	}
 	else if(document.getElementById(contact_id).style.display=="block"){
 		document.getElementById(contact_id).style.display="none";
-		document.getElementById("but"+contact_id).innerText="View Details";
+		document.getElementById("buttonId"+contact_id).innerText="View Details";
 	}
 }
-  
+ 
  function deleteContact(){
-	// while(document.getElementById())
 	var list = document.getElementsByClassName("selectedContact");
 	var deleteContacts = [];
 	var delCon = "";
-	//console.log(list)
 	for (var i =0; i<list.length; i++){
 		if(list[i].checked==true){
 			delCon = delCon + list[i].value + "," ;
@@ -131,9 +110,7 @@
 	console.log(delCon);
 	
  }
-	
-
- </script>
+</script>
 
 </body>
 </html>
