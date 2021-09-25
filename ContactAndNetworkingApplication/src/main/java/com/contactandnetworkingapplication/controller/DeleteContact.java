@@ -18,14 +18,10 @@ import com.contactandnetworkingapplication.dao.ContactDAOImpl;
 @WebServlet("/DeleteContact")
 public class DeleteContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
     public DeleteContact() {
         super();
-       
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -36,29 +32,27 @@ public class DeleteContact extends HttpServlet {
 		
 		String selectedContacts = request.getParameter("labelcon");
 		String[] listOfSelectedContacts = selectedContacts.split(",");
-		
-		System.out.println("selectedContacts ... "+selectedContacts);
-		System.out.println("selectedContacts ... "+listOfSelectedContacts.length);
-		List<Integer> deletedContactsList = new ArrayList<>();
-		for (String s: listOfSelectedContacts) {
-			deletedContactsList.add(Integer.parseInt(s));
-		}
-		ContactDAOImpl contactdaoImpl= new ContactDAOImpl();
-		 try {
-			 contactdaoImpl.deleteContact(deletedContactsList); 
-			 }catch(ClassNotFoundException e) 
-		 		{ e.printStackTrace(); }
-		    request.setAttribute("message","Could not add, Try Again!");
+		if(selectedContacts=="") {
+			request.setAttribute("message","No contact selected");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/ContactDetailsJsp.jsp");
 			rd.forward(request, response);
-		/*
-		 * for(String contact: selectedContacts) {
-		 * deletedContactsList.add(Integer.parseInt(contact)); } ContactDAOImpl
-		 * contactdaoImpl= new ContactDAOImpl(); try {
-		 * contactdaoImpl.deleteContact(deletedContactsList); } catch
-		 * (ClassNotFoundException e) { e.printStackTrace(); }
-		 */
-		
+		}else {
+			
+			System.out.println("selectedContacts ... "+selectedContacts);
+			System.out.println("selectedContacts ... "+listOfSelectedContacts.length);
+			List<Integer> deletedContactsList = new ArrayList<>();
+			for (String s: listOfSelectedContacts) {
+				deletedContactsList.add(Integer.parseInt(s));
+			}
+			ContactDAOImpl contactdaoImpl= new ContactDAOImpl();
+			try {
+				contactdaoImpl.deleteContact(deletedContactsList); 
+			}catch(ClassNotFoundException e) 
+			{ e.printStackTrace(); }
+			request.setAttribute("message","Could not add, Try Again!");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/ContactDetailsJsp.jsp");
+			rd.forward(request, response);
+		}	
 	}
 
 }
