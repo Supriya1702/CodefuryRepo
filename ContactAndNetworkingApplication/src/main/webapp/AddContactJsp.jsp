@@ -9,17 +9,16 @@
 
 <body>
         <h1>Add Contact</h1>
-       
         <form action="ContactServlet" method="post">
         
-            <table style="with: 50%">
+            <table>
                 <tr>
                     <td>FullName</td>
-                    <td><input type="text" name="fullName" /></td>
+                    <td><input type="text" name="fullName" required pattern="^[A-Za-z]* [A-Za-z]*$"/></td>
                 </tr>
                 <tr>
                     <td>Email id:</td>
-                    <td><input type="email" name="email" /></td>
+                    <td><input type="email" name="email" required /></td>
                 </tr>
                 <tr>
                     <td>Phone No.</td>
@@ -65,7 +64,7 @@
                 
             </table>
             <input type="submit" value="Submit" />
-             <div style="float: right;"> ${ message }</div>
+             <div style="color:green"><h4> ${ message }</h4></div>
            </form>
             
     </body>
