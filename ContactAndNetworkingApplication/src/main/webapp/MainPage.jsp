@@ -78,7 +78,7 @@
 		<div class="card">
 			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png" style="width:20%","height:10%" class="card_image">
 			<div class="content">
-				<a href="#">Search Users</a>
+				<a href="SearchUser.jsp">Search Users</a>
 			</div>
 		</div>
 		</td>
@@ -108,7 +108,7 @@
 		<div class="card">
 			<img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/block-person-1446662-1222337.png" style="width:20%","height:20%" class="card_image">
 			<div class="content">
-				<a href="#">Blocked Users</a>
+				<a href="FriendServlet?option=block">Blocked Users</a>
 			</div>
 		</div>
 		</td>

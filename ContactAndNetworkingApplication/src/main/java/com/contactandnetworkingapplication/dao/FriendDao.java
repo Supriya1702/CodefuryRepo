@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.contactandnetworkingapplication.model.Friend;
@@ -80,6 +81,107 @@ public class FriendDao implements FriendDaoInterface {
 		}
 		
 		return res;
+	}
+
+	@Override
+	public HashMap<Integer, String> viewBlocked(int id) {
+		final String SQL = "Select blocked_id from blockedusers where user_id = ?";
+		ConnectionUtil a = new ConnectionUtil();
+		Connection conn=a.createConnection();
+		PreparedStatement ps;
+		List <Integer> idList = new ArrayList();
+		try {
+			
+			ps = conn.prepareStatement(SQL);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			
+			while (rs.next()) {
+				int blocked_id = (int) rs.getInt("blocked_id");
+				idList.add(blocked_id);
+			}
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println("List Size : " + idList.size());
+			HashMap<Integer , String> hp = getUserName(idList);
+			if(hp != null) return hp;
+			return null;
+	}
+	private HashMap<Integer,  String> getUserName(List <Integer> idList) {
+		HashMap<Integer , String> hp = new HashMap<>();
+		for(Integer id : idList) {
+			final String SQL1 = "Select fullname from user where id = ?";
+			ConnectionUtil a = new ConnectionUtil();
+			Connection conn=a.createConnection();
+			PreparedStatement ps;
+			try {
+				
+				ps = conn.prepareStatement(SQL1);
+				ps.setInt(1, id);
+				ResultSet rs = ps.executeQuery();
+				if (rs.next()) {
+					String name  =  rs.getString("fullname");
+					hp.put(id, name);
+				}
+				else
+				{
+					return null;
+				}
+			}catch (SQLException e1) {
+				e1.printStackTrace();
+			} finally {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return hp;
+	}
+
+	@Override
+	public int confirmBlocked(int user_id , int blocked_id) {
+		ConnectionUtil a = new ConnectionUtil();
+		Connection c=a.createConnection();
+		try {
+			c.setAutoCommit(false);
+		} 
+		catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		PreparedStatement p=null;
+		int res1=0;
+		try {
+			p = c.prepareStatement("delete from blockedusers where (user_id=? and blocked_id=?)");
+			p.setInt(1,user_id);
+			p.setInt(2,blocked_id);
+			
+			res1 = p.executeUpdate();
+			System.out.println("1st " + res1);
+			if(res1 != -1) return 1;
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				c.commit();
+				c.close();
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
 	}
 	
 }

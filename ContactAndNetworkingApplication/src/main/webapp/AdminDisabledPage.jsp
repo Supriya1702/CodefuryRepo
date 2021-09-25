@@ -12,16 +12,15 @@
 		<% 
 			HashMap <Integer , String> hp = (HashMap <Integer , String>)request.getAttribute("info");
 			String message = (String)request.getAttribute("message");
-			if(hp.size() != 0){
+			if(hp != null){
 				%>
 				<center>
 				<table border="5px">
 		<%			for(HashMap.Entry<Integer, String> entry : hp.entrySet()) {
 					Integer id = entry.getKey();
-					out.println("Id1 : " + id);
 					String location = entry.getValue();
 		%>
-					<c:url var="accept" value="AdminDisabledFunctionality">
+					<c:url var="accept" value="AdminServlet">
 	  						<c:param name="option" value="accept"></c:param>
 	  						<c:param name="id" value= "<%= id.toString() %>"></c:param>
 					</c:url>
