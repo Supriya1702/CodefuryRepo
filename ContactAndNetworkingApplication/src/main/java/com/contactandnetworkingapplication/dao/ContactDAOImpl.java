@@ -15,34 +15,35 @@ import com.contactandnetworkingapplication.dao.ContactDAO;
 import com.contactandnetworkingapplication.model.Contacts;
 import com.contactandnetworkingapplication.model.User;
 
-
-
+//Implementing the functionalities for contact class.
 public class ContactDAOImpl implements ContactDAO{
 	private static String conURL;
 	private static String dbDriver;
 	private static String dbUsername;
 	private static String dbPassword;
 	
-	
+	//initializing the values for database connection.
 	static {
-		conURL ="jdbc:mysql://85.10.205.173:3306/codefury_contact";
-		dbDriver="com.mysql.cj.jdbc.Driver";
+		conURL ="jdbc:mysql://85.10.205.173:3306/codefury_contact"; //database hosted on db4free.net 
+		dbDriver="com.mysql.cj.jdbc.Driver";       
 		dbUsername="app_monsters";
 		dbPassword="student1234";
 	}
 	
 
+	//Using Contacts class to insert data in 'contacts' table of database.
 	@Override
 	public int addContact(Contacts contact) throws ClassNotFoundException {
+		//Storing the database query into aString variable.
 		String INSERT_INTO_CONTACTS ="Insert into contacts(user_id, fullname,email, phoneno, gender, dob, address, city, state, country, company) values"+"(?,?,?,?,?,?,?,?,?,?,?);";
 		
 		int result=0;
-		System.out.println("In add Contacts -- Value is initialized");
 		Class.forName(dbDriver);
 		
+		//Creating connection to db and executing the Insert query.
 		try (Connection con = DriverManager.getConnection(conURL, dbUsername,dbPassword);
 
-	            // Step 2:Create a statement using connection object
+	            // Creating a statement using connection object
 	            PreparedStatement ps = con.prepareStatement(INSERT_INTO_CONTACTS)) {
 			    ps.setInt(1, contact.getUniqueId());
 	            ps.setString(2, contact.getFullName());
@@ -58,13 +59,13 @@ public class ContactDAOImpl implements ContactDAO{
 	           // ps.setBlob(12,(Blob) contact.getContactImage());
 
 	            System.out.println(ps);
-	            // Step 3: Execute the query or update query
+	            //Executing the query.
 	            result = ps.executeUpdate();
 	            if(result>0)
 					System.out.println(result + " record/records inserted");
 
 	        } catch (SQLException e) {
-	            // process sql exception
+	            // processing sql exception
 	            printSQLException(e);
 	   }
 	   return result;
@@ -74,7 +75,6 @@ public class ContactDAOImpl implements ContactDAO{
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
                 e.printStackTrace(System.err);
-                System.err.println("SQLState: " + ((SQLException) e).getSQLState());
                 System.err.println("Error Code: " + ((SQLException) e).getErrorCode());
                 System.err.println("Message: " + e.getMessage());
                 Throwable t = ex.getCause();
@@ -93,28 +93,34 @@ public class ContactDAOImpl implements ContactDAO{
 		
 	}
 
+	
+	//function to get a list of Contacts for the user from database.
 	@Override
 	public List<Contacts> getContacts(int id) throws ClassNotFoundException {
 		
+		//Storing the database query into a String variable.
 		String SELECT_FROM_CONTACTS ="Select * from contacts where user_id= "+id+";"; 
-	
-		int result=0;
-		System.out.println("In add Contacts -- Value is initialized");
 		Class.forName(dbDriver);
 		
 		ArrayList<Contacts> contactList = new ArrayList<>();
 		
+		//Creating connection to db and executing the Select query.
 		try (Connection con = DriverManager.getConnection(conURL, dbUsername,dbPassword);
 				Statement stmt = con.createStatement();){
 				ResultSet rs = stmt.executeQuery(SELECT_FROM_CONTACTS);
 	            while(rs.next()) {
-					System.out.println(rs.getString("fullName") + rs.getString("email") +" record/records inserted");
+	            	//Creating Contacts object to store in a list.  
 					Contacts contact = new Contacts();
 					contact.setFullName(rs.getString("fullName"));
 					contact.setEmail(rs.getString("email"));
 					contact.setPhone_no(rs.getString("phoneno"));
 					contact.setGender(rs.getString("gender"));
-					contact.setDateOfBirth(rs.getString("dob"));
+					System.out.println(rs.getString("dob"));
+					if(rs.getString("dob")!=null) {
+						contact.setDateOfBirth(rs.getString("dob"));						
+					}else {
+						contact.setDateOfBirth("Not Found!");						
+					}
 					contact.setAddress(rs.getString("address"));
 					contact.setCity(rs.getString("city"));
 					contact.setState(rs.getString("state"));
@@ -123,7 +129,7 @@ public class ContactDAOImpl implements ContactDAO{
 					//contact.setFullName(rs.getString("contactImage"));
 					contact.setContact_id(rs.getInt("contact_id"));
 					
-					//set all fields
+					//adding the contact object to the list.
 					contactList.add(contact);
 	            }
 	        } catch (SQLException e) {
@@ -133,22 +139,26 @@ public class ContactDAOImpl implements ContactDAO{
 		return contactList;
 	}
 
+	//function to delete contacts from the database.
 	@Override
 	public void deleteContact(List<Integer> contact_ids) throws ClassNotFoundException {
-     String DELETE_CONTACT ="DELETE FROM contacts WHERE contact_id=?";
+		//Storing the database query into a String variable.
+		String DELETE_CONTACT ="DELETE FROM contacts WHERE contact_id=?";
 		
 		int result=0;
-		System.out.println("In Delete Section -- Value is initialized");
 		Class.forName(dbDriver);
 		
+		//Creating connection to db and executing the Select query.
 		try (Connection con = DriverManager.getConnection(conURL, dbUsername,dbPassword);
-				PreparedStatement ps = con.prepareStatement(DELETE_CONTACT)) {
+			PreparedStatement ps = con.prepareStatement(DELETE_CONTACT)) {
+			
+			//for deleting multiple contacts at a time.
 			for (int deletedContact : contact_ids) {
 			    ps.setInt(1, deletedContact);
 			    result=ps.executeUpdate();
 			}
 		}catch (SQLException e) {
-            // process sql exception
+            // processing sql exception
             printSQLException(e);
 		}
 
