@@ -36,8 +36,7 @@
 				else {
 		 	
 		%>
-		<h4><%=message  %></h4>
-		<!-- <a href = "AdminPage.jsp"> Go Back </a> -->
+		<h4><%= message  %></h4>
 	<% }
 	%>
 </body>

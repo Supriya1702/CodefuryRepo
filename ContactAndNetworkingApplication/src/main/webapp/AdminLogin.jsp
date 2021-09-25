@@ -6,7 +6,7 @@
 <title>Admin Login</title>
 
 <link href="css/AdminLoginCss.css" rel="stylesheet" type="text/css" />
-<script src="AdminLoginJs.js">
+<script src="js/AdminLoginJs.js">
 </script>
 
 </head>
@@ -29,10 +29,9 @@ value="" size="30" maxlength="2048" /></div>
 <div id="login-box-name" style="font-size:15;">Password:</div><div id="login-box-field">
 <input type="password" name="password" id="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
 <br />
-<span class="login-box-options" style="font-size:12;"><input type="checkbox" name="1" value="1"> Remember Me</span>
 <br />
 <br />
-<input type="submit" value="Login" class="btn" ></p>
+<p><input type="submit" value="Login" onclick = "validateUserName()" class="btn" ></p>
 </form>
 
 
