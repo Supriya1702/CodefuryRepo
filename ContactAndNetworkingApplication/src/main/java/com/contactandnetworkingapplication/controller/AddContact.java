@@ -14,7 +14,6 @@ import com.contactandnetworkingapplication.model.Contacts;
 import com.contactandnetworkingapplication.model.User;
 import com.contactandnetworkingapplication.dao.ContactDAOImpl;
 
-//Creating Servlet class for http request. 
 @WebServlet("/ContactServlet")
 public class AddContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +23,6 @@ public class AddContact extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    //creating ContactDAOImpl object to save data to database. 
     ContactDAOImpl contactdaoImpl ;
     public void init(){
     	contactdaoImpl= new ContactDAOImpl();
@@ -36,19 +34,12 @@ public class AddContact extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Getting the userId from the http session.
 		HttpSession session = request.getSession(true);
 		int id=(int) session.getAttribute("id");
+		User u = new User();
+		u.setId(id);
+		System.out.println("user id a ");
 		
-		if(session.getAttribute("id")!=null) {
-		System.out.println("user is "+id);
-		}else {
-			request.setAttribute("message","Session Expired!!!");
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.jsp");
-			rd.forward(request, response);
-		}
-		System.out.println(id);		
-		//getting contacts from request parameters and passing them to the DAO 
 		response.setContentType("text/jsp");
 		String fullName =request.getParameter("fullName");
 		String email =request.getParameter("email");
@@ -61,16 +52,14 @@ public class AddContact extends HttpServlet {
 		String country =request.getParameter("country");
 		String company =request.getParameter("company");
 		int uniqueId=id;
-		
+		System.out.println(id);		
 		Contacts contact = new Contacts();
 		
 		contact.setFullName(fullName);
 		contact.setEmail(email);
 		contact.setPhone_no(phone_no);
 		contact.setGender(gender);
-		if(!dateOfBirth.equals("")) {
 		contact.setDateOfBirth(dateOfBirth);
-		}
 		contact.setAddress(address);
 		contact.setCity(city);
 		contact.setState(state);
