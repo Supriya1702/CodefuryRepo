@@ -14,6 +14,7 @@ import com.contactandnetworkingapplication.model.Contacts;
 import com.contactandnetworkingapplication.model.User;
 import com.contactandnetworkingapplication.dao.ContactDAOImpl;
 
+//Creating Servlet class for http request.
 @WebServlet("/ContactServlet")
 public class AddContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,7 +34,8 @@ public class AddContact extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+		//Getting the userId from the http session.
 		HttpSession session = request.getSession(true);
 		int id=(int) session.getAttribute("id");
 
@@ -58,7 +60,7 @@ public class AddContact extends HttpServlet {
 		String country =request.getParameter("country");
 		String company =request.getParameter("company");
 		int uniqueId=id;
-		System.out.println(id);		
+
 		Contacts contact = new Contacts();
 		
 		contact.setFullName(fullName);
