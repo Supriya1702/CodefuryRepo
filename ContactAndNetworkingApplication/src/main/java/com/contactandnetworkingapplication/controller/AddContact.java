@@ -36,10 +36,16 @@ public class AddContact extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		int id=(int) session.getAttribute("id");
-		User u = new User();
-		u.setId(id);
-		System.out.println("user id a ");
-		
+
+		if(session.getAttribute("id")!=null) {
+			System.out.println("user is "+id);
+		}else {
+			request.setAttribute("message","Session Expired!!!");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.jsp");
+			rd.forward(request, response);
+		}
+		System.out.println(id);
+		//getting contacts from request parameters and passing them to the DAO
 		response.setContentType("text/jsp");
 		String fullName =request.getParameter("fullName");
 		String email =request.getParameter("email");
@@ -59,7 +65,9 @@ public class AddContact extends HttpServlet {
 		contact.setEmail(email);
 		contact.setPhone_no(phone_no);
 		contact.setGender(gender);
-		contact.setDateOfBirth(dateOfBirth);
+		if(!dateOfBirth.equals("")) {
+			contact.setDateOfBirth(dateOfBirth);
+		}
 		contact.setAddress(address);
 		contact.setCity(city);
 		contact.setState(state);
