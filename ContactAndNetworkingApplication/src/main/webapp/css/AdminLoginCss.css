@@ -75,3 +75,6 @@ background-image:url('../images/admin.jpg');
  -o-background-size: cover;
   background-size: cover;
 }
+a{
+	color:#ADD8E6;
+}
