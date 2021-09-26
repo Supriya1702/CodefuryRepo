@@ -5,12 +5,28 @@ public class Admin {
 	private String adminName;
 	private String adminEmail;
 	private int adminPhone;
-//	private String adminUserName;
-//	private String adminPassword;
+	private String adminUserName;
+	private String adminPassword;
 //	
 	//Constructors
 	public Admin() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getAdminUserName() {
+		return adminUserName;
+	}
+
+	public void setAdminUserName(String adminUserName) {
+		this.adminUserName = adminUserName;
+	}
+
+	public String getAdminPassword() {
+		return adminPassword;
+	}
+
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
 	}
 
 	public Admin(int adminId, String adminName, String adminEmail, int adminPhone) {
