@@ -14,7 +14,7 @@ import com.contactandnetworkingapplication.model.User;
 public class FriendDao implements FriendDaoInterface {
 
 	@Override
-	public List<User> viewFriendsDao(User u) {
+	public List<User> viewFriendsDao(User u) {		//fetching friends from friends table 
 		ConnectionUtil c = new ConnectionUtil();
 		Connection conn = c.createConnection();
 		PreparedStatement p=null;
@@ -48,7 +48,7 @@ public class FriendDao implements FriendDaoInterface {
 	}
 
 	@Override
-	public int removeFriend(Friend f) {
+	public int removeFriend(Friend f) {		//removing from friend table
 		ConnectionUtil a = new ConnectionUtil();
 		Connection con = a.createConnection();
 		try {
@@ -84,7 +84,7 @@ public class FriendDao implements FriendDaoInterface {
 	}
 
 	@Override
-	public HashMap<Integer, String> viewBlocked(int id) {
+	public HashMap<Integer, String> viewBlocked(int id) {	//viewing blocked users
 		final String SQL = "Select blocked_id from blockedusers where user_id = ?";
 		ConnectionUtil a = new ConnectionUtil();
 		Connection conn=a.createConnection();

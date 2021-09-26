@@ -34,7 +34,9 @@ public class AdminDAO implements AdminDaoInterface {
 				admin.setAdminName(rs.getString("admin_name"));
 				admin.setAdminEmail(rs.getString("admin_email"));
 				admin.setAdminPhone(rs.getInt("admin_phoneno"));
-				System.out.println(admin);
+				admin.setAdminUserName(rs.getString("admin_username"));
+				admin.setAdminPassword(rs.getString("admin_password"));
+				System.out.println(admin.getAdminUserName() + admin.getAdminPassword());
 				return admin;
 			}
 			} catch (SQLException e1) {

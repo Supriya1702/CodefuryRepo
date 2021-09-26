@@ -10,7 +10,7 @@ import com.contactandnetworkingapplication.model.BlockedUser;
 public class BlockedUserDao implements BlockeUserdDaoInterface {
 
 	@Override
-	public int blockUser(BlockedUser b) {
+	public int blockUser(BlockedUser b) {		//inserting into blocked user table
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p=null;

@@ -13,19 +13,21 @@ import com.contactandnetworkingapplication.model.User;
 public class SearchDao implements SearchDaoInterface {
 
 	@Override
-	public List<User> searchByCityDao(User u) {
+	public List<User> searchByCityDao(User u) {		//fetching records by city
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p=null;
 		List<User> list = new ArrayList<User>();
 		try {
 			p = c.prepareStatement("select u.id,u.fullname from user u where city=? and u.id<>? and u.id not in (select blocked_id from blockedusers b where b.user_id=?) "
-					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?);");
+					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?)"
+					+ "and u.id not in (select receiver_id from friendrequest where sender_id=?) ;");
 			p.setString(1, u.getCity());
 			p.setInt(2, u.getId());
 			p.setInt(3, u.getId());
 			p.setInt(4, u.getId());
 			p.setInt(5, u.getId());
+			p.setInt(6, u.getId());
 			ResultSet rs = p.executeQuery();
 			
 			while(rs.next()) {
@@ -52,19 +54,21 @@ public class SearchDao implements SearchDaoInterface {
 	}
 
 	@Override
-	public List<User> searchbyStateDao(User u) {
+	public List<User> searchbyStateDao(User u) {	//fetching records by state
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p=null;
 		List<User> list = new ArrayList<User>();
 		try {
 			p = c.prepareStatement("select u.id,u.fullname from user u where state=? and u.id<>? and u.id not in (select blocked_id from blockedusers b where b.user_id=?) "
-					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?);");
+					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?)"
+					+ "and u.id not in (select receiver_id from friendrequest where sender_id=?);");
 			p.setString(1, u.getState());
 			p.setInt(2, u.getId());
 			p.setInt(3, u.getId());
 			p.setInt(4, u.getId());
 			p.setInt(5, u.getId());
+			p.setInt(6, u.getId());
 			ResultSet rs = p.executeQuery();
 			
 			while(rs.next()) {
@@ -91,19 +95,21 @@ public class SearchDao implements SearchDaoInterface {
 	}
 
 	@Override
-	public List<User> searchbyCompanyDao(User u) {
+	public List<User> searchbyCompanyDao(User u) {		//fetching records by company
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p=null;
 		List<User> list = new ArrayList<User>();
 		try {
 			p = c.prepareStatement("select u.id,u.fullname from user u where company=? and u.id<>? and u.id not in (select blocked_id from blockedusers b where b.user_id=?) "
-					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?);");
+					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?"
+					+ "and u.id not in (select receiver_id from friendrequest where sender_id=?);");
 			p.setString(1, u.getCompany());
 			p.setInt(2, u.getId());
 			p.setInt(3, u.getId());
 			p.setInt(4, u.getId());
 			p.setInt(5, u.getId());
+			p.setInt(6, u.getId());
 			ResultSet rs = p.executeQuery();
 			
 			while(rs.next()) {

@@ -13,7 +13,7 @@ import com.contactandnetworkingapplication.model.User;
 public class SendFriendRequestDao implements SendFriendRequestDaoInterface {
 
 	@Override
-	public int sendFriendRequest(FriendRequest f) {
+	public int sendFriendRequest(FriendRequest f) {		//inserting in friend request table
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p=null;

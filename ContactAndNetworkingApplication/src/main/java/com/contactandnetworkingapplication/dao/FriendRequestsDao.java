@@ -12,8 +12,8 @@ import com.contactandnetworkingapplication.model.User;
 
 public class FriendRequestsDao implements FriendRequestsDaoInterface {
 
-	@Override
-	public List<FriendRequest> viewFriendRequestsDao(User u) {
+	@Override	
+	public List<FriendRequest> viewFriendRequestsDao(User u) {		//fetching from friend requests table
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p=null;
@@ -50,7 +50,7 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 	}
 
 	@Override
-	public int acceptFriendRequestDao(FriendRequest f) {
+	public int acceptFriendRequestDao(FriendRequest f) {	//accepting friend request 
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		try {
@@ -92,7 +92,7 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 	}
 
 	@Override
-	public int ignoreFriendRequestDao(FriendRequest f) {
+	public int ignoreFriendRequestDao(FriendRequest f) {		//ignore friend request
 		int res=0;
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
@@ -118,7 +118,7 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 	}
 
 	@Override
-	public int blockFriendRequestDao(FriendRequest f) {
+	public int blockFriendRequestDao(FriendRequest f) {		//block the user who has sent friend request
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		try {

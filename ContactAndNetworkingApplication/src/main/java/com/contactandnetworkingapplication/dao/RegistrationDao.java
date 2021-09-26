@@ -10,7 +10,7 @@ import com.contactandnetworkingapplication.model.User;
 public class RegistrationDao implements RegistrationDaoInterface {
 
 	@Override
-	public int registerUserDao(User u) {
+	public int registerUserDao(User u) {		//new user registration
 		int res=0;
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
@@ -33,8 +33,7 @@ public class RegistrationDao implements RegistrationDaoInterface {
 			
 			
 			res = p.executeUpdate();
-			if(res>0)
-				System.out.println(res + " record/records inserted");
+			
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -52,7 +51,7 @@ public class RegistrationDao implements RegistrationDaoInterface {
 	}
 
 	@Override
-	public User loginUserDao(User u) {
+	public User loginUserDao(User u) {		//checking whether user is registered to login or not
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p;
@@ -78,7 +77,7 @@ public class RegistrationDao implements RegistrationDaoInterface {
 				res.setCompany(rs.getString("company"));
 				res.setUsername(rs.getString("username"));
 				res.setPassword(rs.getString("password"));
-				System.out.println(res.toString());
+				//System.out.println(res.toString());
 				return res;
 			}
 		} 
