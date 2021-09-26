@@ -33,7 +33,7 @@ public class FriendRequestsServlet extends HttpServlet {
 		
 		String option = request.getParameter("option");
 		
-		if(option.equals("view")) {
+		if(option.equals("view")) {		//if view friend requests is selected
 			FriendRequestsDaoInterface ud = DaoFactory.createFriendRequestsObject();
 			
 			HttpSession session = request.getSession(true);
@@ -54,7 +54,7 @@ public class FriendRequestsServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
-		else if(option.equals("accept")) {
+		else if(option.equals("accept")) {		//if accept friend request is selected
 			FriendRequestsDaoInterface ud = DaoFactory.createFriendRequestsObject();
 			
 			int id = Integer.parseInt(request.getParameter("id"));
@@ -79,7 +79,7 @@ public class FriendRequestsServlet extends HttpServlet {
 			}
 			
 		}
-		else if(option.equals("ignore")) {
+		else if(option.equals("ignore")) {		//if ignore friend request is selected
 			FriendRequestsDaoInterface ud = DaoFactory.createFriendRequestsObject();
 			
 			int id = Integer.parseInt(request.getParameter("id"));
@@ -100,7 +100,7 @@ public class FriendRequestsServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
-		else if(option.equals("block")) {
+		else if(option.equals("block")) {		//if block user is selected
 			FriendRequestsDaoInterface ud = DaoFactory.createFriendRequestsObject();
 			
 			int id = Integer.parseInt(request.getParameter("id"));

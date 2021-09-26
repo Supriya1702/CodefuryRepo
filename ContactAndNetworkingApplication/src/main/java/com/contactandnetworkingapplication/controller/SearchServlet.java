@@ -22,31 +22,22 @@ import com.contactandnetworkingapplication.utility.DaoFactory;
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public SearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String select = request.getParameter("select");
 		HttpSession session = request.getSession();
 		int user_id=(int) session.getAttribute("id");
 		
-		if(select.equals("city")) {
+		if(select.equals("city")) {		//search by city
 			String search = request.getParameter("search");
 			User u = new User();
 			u.setId(user_id);
@@ -54,18 +45,18 @@ public class SearchServlet extends HttpServlet {
 			
 			SearchDaoInterface sd = DaoFactory.createSearchObject();
 			List<User> list = sd.searchByCityDao(u);
-			if(list.size()>0) {
+			if(list.size()>0) {		//users found
 				request.setAttribute("list",list);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
 			}
-			else {
+			else {			//no users found
 				request.setAttribute("message","No users found");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
 			}
 		}
-		else if(select.equals("state")) {
+		else if(select.equals("state")) {		//search by state
 			String search = request.getParameter("search");
 			User u = new User();
 			u.setId(user_id);
@@ -73,18 +64,18 @@ public class SearchServlet extends HttpServlet {
 			
 			SearchDaoInterface sd = DaoFactory.createSearchObject();
 			List<User> list = sd.searchbyStateDao(u);
-			if(list.size()>0) {
+			if(list.size()>0) {		//users found
 				request.setAttribute("list",list);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
 			}
-			else {
+			else {			//no users found
 				request.setAttribute("message","No users found");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
 			}
 		}
-		else if(select.equals("company")) {
+		else if(select.equals("company")) {		//search by company
 			String search = request.getParameter("search");
 			User u = new User();
 			u.setId(user_id);
@@ -92,12 +83,12 @@ public class SearchServlet extends HttpServlet {
 			
 			SearchDaoInterface sd = DaoFactory.createSearchObject();
 			List<User> list = sd.searchbyCompanyDao(u);
-			if(list.size()>0) {
+			if(list.size()>0) {		//users found
 				request.setAttribute("list",list);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
 			}
-			else {
+			else {			//no users found
 				request.setAttribute("message","No users found");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);

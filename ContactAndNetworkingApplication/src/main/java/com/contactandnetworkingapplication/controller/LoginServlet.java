@@ -26,28 +26,36 @@ public class LoginServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		HttpSession session = request.getSession();		//getting session object
+		String email;
+		String password;
 		
-		System.out.println(email + password);
+		//if session is available 
+		if(session.getAttribute("user")!=null) {
+			User p = (User) session.getAttribute("user");
+			email=p.getEmail();
+			password =p.getPassword();
+		}
+		else {	//if session is not available
+			email = request.getParameter("email");
+			password = request.getParameter("password");
+		}
 		
 		User u = new User();
 		u.setEmail(email);
 		u.setPassword(password);
 		
-		RegistrationDaoInterface ud = DaoFactory.createRegistrationObject();
+		RegistrationDaoInterface ud = DaoFactory.createRegistrationObject();	//accessing dao layer
 		User res=ud.loginUserDao(u);
-		if(res!=null) {
-			HttpSession session = request.getSession(true);
+		if(res!=null) {				//valid user
 			session.setAttribute("id",res.getId());
+			session.setAttribute("user", res);
 			
-			System.out.println("user id " + session.getAttribute("id"));
-			System.out.println(res.getDob());
 			request.setAttribute("User",res);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/MainPage.jsp");
 			rd.forward(request, response);
 		}
-		else {
+		else {					//invalid user
 			request.setAttribute("message","Invalid Username or password.");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Login.jsp");
 			rd.forward(request, response);

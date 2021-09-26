@@ -33,7 +33,7 @@ public class FriendServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String option = request.getParameter("option");
 		System.out.println(option);
-		if(option.equals("view")) {
+		if(option.equals("view")) {		//if view friends is selected
 			FriendDaoInterface ud = DaoFactory.createFriend();
 			
 			HttpSession session = request.getSession(true);
@@ -54,7 +54,7 @@ public class FriendServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
-		else if(option.equals("remove")){
+		else if(option.equals("remove")){		//if unFriend option is selected
 			HttpSession session = request.getSession(true);
 			int id=(int) session.getAttribute("id");
 	
@@ -78,7 +78,7 @@ public class FriendServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
-		else if(option.equals("block")){
+		else if(option.equals("block")){	//if block user is selected
 			HttpSession session = request.getSession(true);
 			int id=(int) session.getAttribute("id");
 //			u.setId(id);
@@ -102,7 +102,7 @@ public class FriendServlet extends HttpServlet {
 			
 			
 		}
-		else if(option.equals("blocked")){
+		else if(option.equals("blocked")){		//if blocked user is selected
 			HttpSession session = request.getSession(true);
 			int user_id=(int) session.getAttribute("id");
 			int blocked_id = Integer.parseInt(request.getParameter("blocked_id"));

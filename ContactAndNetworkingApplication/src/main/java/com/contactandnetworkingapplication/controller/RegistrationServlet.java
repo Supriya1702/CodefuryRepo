@@ -26,7 +26,7 @@ public class RegistrationServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
+		String name = request.getParameter("name");		//getting user details for registration
 		String email= request.getParameter("email");
 		long phoneno = Long.parseLong(request.getParameter("phoneno"));
 		String gender= request.getParameter("gender");
@@ -39,7 +39,6 @@ public class RegistrationServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		System.out.println(name+email+phoneno+gender+ dob + address +city+state+country+company+username + password);
 
 		User u = new User();
 		u.setName(name);
@@ -55,15 +54,15 @@ public class RegistrationServlet extends HttpServlet {
 		u.setUsername(username);
 		u.setPassword(password);
 		
-		RegistrationDaoInterface ud = DaoFactory.createRegistrationObject();
+		RegistrationDaoInterface ud = DaoFactory.createRegistrationObject();	//accessing Dao Layer
 		int res=ud.registerUserDao(u);
 		
-		if(res>0) {
+		if(res>0) {			//if registration is successful
 			request.setAttribute("message","Registration successful. <a href=Login.jsp>Sign In</a>");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
 			rd.forward(request, response);
 		}
-		else {
+		else {				//if unable to register
 			request.setAttribute("message","Could not register.");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
 			rd.forward(request, response);

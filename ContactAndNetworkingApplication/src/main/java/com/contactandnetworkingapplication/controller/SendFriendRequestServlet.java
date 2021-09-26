@@ -21,17 +21,11 @@ import com.contactandnetworkingapplication.utility.DaoFactory;
 public class SendFriendRequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public SendFriendRequestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int receiver_id = Integer.parseInt(request.getParameter("receiver_id"));
 		HttpSession session = request.getSession();
@@ -40,23 +34,20 @@ public class SendFriendRequestServlet extends HttpServlet {
 		f.setReceiver_id(receiver_id);
 		f.setSender_id(sender_id);
 		
-		SendFriendRequestDaoInterface fd = DaoFactory.createSendFriendRequestDao();
+		SendFriendRequestDaoInterface fd = DaoFactory.createSendFriendRequestDao(); 	//accessing Dao Layer
 		int res = fd.sendFriendRequest(f);
-		if(res==1) {
+		if(res==1) {		//if successful
 			request.setAttribute("message","Friend Request Sent");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 			rd.forward(request, response);
 		}
-		else {
+		else {				//if unsuccessful
 			request.setAttribute("message","Was unable to Send Friend Request. Please try again.");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 			rd.forward(request, response);
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
