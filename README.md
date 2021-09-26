@@ -23,7 +23,7 @@ Requirements:-
  * Java (JRE) 
  * JDK
  * Apache Tomcat- https://tomcat.apache.org/download-90.cgi
- * Eclipse/Spring Tool Suit (Any preffered Java servlet supported IDE)
+ * Eclipse/Spring Tool Suite (Any preffered Java servlet supported IDE)
 
 Steps:-
 1. Clone the repository.
