@@ -57,10 +57,11 @@ body{
              <small>&copy; CodeFury App Monsters</small> 
            </div>
 	  </div>
-	
+
 	</div>
 	
 	</div>
 	 <div >${ message }</div>
+	 <center><a href="Home_Page.jsp" style="color: black">Go back to Home Page</a></center>
 </body>
 </html>

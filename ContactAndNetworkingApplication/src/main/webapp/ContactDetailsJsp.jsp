@@ -10,20 +10,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"> 
-<title>ContatcDetails</title>
+<meta charset="UTF-8">
+<title>Contact Details</title>
 <link href="css/background.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
+<link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
 </head>
 
 <body>
-	<c:url var="logout" value="Logout.jsp">
-	</c:url>
-	<div align="right">
-	<input type="button" value = "Profile"/>
-	<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
-	</div>
+	<%
+	if(session.getAttribute("id") == null)
+	{
+		response.sendRedirect("Login.jsp");
+		return ;
+	}
 
-
+	%>
+	<ul>
+	  <li><a class="active" href="LoginServlet">Home</a></li>
+	  <li style="float:right"><a href="Logout.jsp">Logout</a></li>
+	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
+	</ul>
  <jsp:useBean id="contact" class="com.contactandnetworkingapplication.model.Contacts" />
   <%
 	int id=(int) session.getAttribute("id");
@@ -40,14 +47,16 @@
 	
 <div class="allContacts">
   <H3>My Contact List</h3>
+  
   <table>
   <tr>
+  		
   		<th>Name</th>
   		<th>Email</th>
   		<th>Select</th>
   	</tr>
   	
-  <% 
+  <%
   for (Contacts c :contactList){
 	 String butId="buttonId"+c.getContact_id();
 	  %>
@@ -72,7 +81,7 @@
 	  		</ul>
 	  		</td>
 	  	</tr>
-	  <% 
+	  <%
   }
   	%>
   	
@@ -81,10 +90,11 @@
     <input type="text" style="display:none" name="labelcon" id="labelcon" value="0" ></label>
   	<button  type="submit" >Delete Selected</button>
   	</form>
-  	
-  </div>
-
+	<footer id="footer">
+	  <small id="footer-text">&copy; CodeFury App Monsters</small>
+	</footer>
  <jsp:setProperty property="*" name="contact" />
+ 
  <script> function showDetails(contact_id){
 	console.log("in showDetails");
 	if(document.getElementById(contact_id).style.display=="none"){
@@ -96,7 +106,7 @@
 		document.getElementById("buttonId"+contact_id).innerText="View Details";
 	}
 }
- 
+
  function deleteContact(){
 	var list = document.getElementsByClassName("selectedContact");
 	var deleteContacts = [];

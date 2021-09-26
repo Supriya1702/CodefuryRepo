@@ -9,17 +9,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Friends</title>
+<link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
+<link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
 <link href="css/background.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h1> Friends list</h1>
+	<%
+	if(session.getAttribute("id") == null)
+	{
+		response.sendRedirect("Login.jsp");
+		return ;
+	}
 	
-	<c:url var="logout" value="Logout.jsp">
-	</c:url>
-	<div align="right">
-	<input type="button" value = "Profile"/>
-	<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
-	</div>
+	%>
+	<ul>
+	  <li><a class="active" href="LoginServlet">Home</a></li>
+	  <li style="float:right"><a href="Logout.jsp">Logout</a></li>
+	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
+	</ul>
+	<h1> Friends list</h1>
 	
 	<% 
 		List<User> list = (List<User>)request.getAttribute("list");
@@ -46,5 +54,8 @@
 	%>
 		<h4><%=message  %></h4>
 	<% }%>
+	<footer id="footer">
+	  <small id="footer-text">&copy; CodeFury App Monsters</small>
+	</footer>
 </body>
 </html>

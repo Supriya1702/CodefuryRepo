@@ -8,14 +8,18 @@
 <!-- <link href="AdminLoginCss.css" rel="stylesheet" type="text/css" /> -->
 <link href="css/background.css" rel="stylesheet" type="text/css" />
 <title>Admin Page</title>
+<link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
+<link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
+
 </head>
 
-
 <body>
-<c:url var="logout" value="AdminLogout.jsp">
-</c:url>
-<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
-	<h2>	Hello <%= request.getAttribute("name")%>  <br>
+	<ul>
+	  <li><a class="active" href="AdminLoginServlet">Home</a></li>
+	  <li style="float:right"><a href="AdminLogout.jsp">Logout</a></li>
+	</ul>
+
+	<h2>	Hello <%= request.getAttribute("name")%> : <br>
 	
 	Your Details : <br>
 	Email : <%= request.getAttribute("email") %> <br>
@@ -24,18 +28,11 @@
 	 <h2>
 	 	The Count of Active users are : <%= request.getAttribute("count") %>
 	 </h2>
-	<%--  <%
-	 out.println(request.getAttribute("count"));
-	  %> --%>
 	  <br>
 	  <br>
-	  <a href = "AdminServlet?option=disabled"> Users to disable </a>
-	<!--   <h2>
-	 	<a href="/AdminServlet?option=disabled"> View Statistics </a>
-	 </h2>
-	  <h2>
-	 	<a href="/AdminServlet?option=deleted"> View Statistics </a>
-	 </h2> -->
-	 
+	  <a href = "AdminServlet?option=disabled"> View can be disabled users</a>
+	 <footer id="footer">
+	  <small id="footer-text">&copy; CodeFury App Monsters</small>
+	</footer>
 </body>
 </html>

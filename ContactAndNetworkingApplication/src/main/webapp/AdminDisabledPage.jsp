@@ -7,9 +7,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title> Disabled List</title>
+<link rel="stylesheet" type="text/css" href="css/navbarstyles.css">
+<link rel="stylesheet" type="text/css" href="css/footerstyles.css">
 <link href="css/background.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+	<ul>
+	  <li><a class="active" href="AdminLoginServlet">Home</a></li>
+	  <li style="float:right"><a href="AdminLogout.jsp">Logout</a></li>
+	</ul>
 		<% 
 			HashMap <Integer , String> hp = (HashMap <Integer , String>)request.getAttribute("info");
 			String message = (String)request.getAttribute("message");
@@ -39,5 +45,8 @@
 		<h4><%= message  %></h4>
 	<% }
 	%>
+	<footer id="footer">
+	  <small id="footer-text">&copy; CodeFury App Monsters</small>
+	</footer>
 </body>
 </html>
