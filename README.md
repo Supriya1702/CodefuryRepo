@@ -29,7 +29,7 @@ Steps:-
 1. Clone the repository.
 2. Set up Dynamic Web Project Workspace in your preffered IDE.
 3. Import your cloned repository in the workspace.
-4. Set class paths for all the referenced libraries(.jar files) located in 'lib' folder of 'webapp' directory.
+4. Set class paths for all the referenced libraries(.jar files) located in 'lib' folder of 'webapp/web-inf' directory.
 6. You are good to go. 
 
 # Executing the Project 
