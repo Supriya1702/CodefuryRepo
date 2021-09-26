@@ -15,6 +15,7 @@ Some of the main features of this application are:
 * It provides an appealing user-interface/user-experience where people can easily navigate to required actions
 
 
+Database for the project is hosted on "db4free.net" for easier access.
 
 
 # Setting up the Project
