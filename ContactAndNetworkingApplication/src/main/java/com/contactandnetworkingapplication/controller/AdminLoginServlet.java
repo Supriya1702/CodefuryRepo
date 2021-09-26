@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.contactandnetworkingapplication.model.Admin;
-
-
-
+import com.contactandnetworkingapplication.model.User;
 import com.contactandnetworkingapplication.dao.AdminDAO;
 import com.contactandnetworkingapplication.dao.AdminDaoInterface;
 import com.contactandnetworkingapplication.utility.DaoFactory;
@@ -45,18 +43,24 @@ public class AdminLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		
-//		System.out.println(username + password);
-		AdminDaoInterface a = DaoFactory.createAdminObject();
+		HttpSession session = request.getSession();
+		String username;
+		String password;
+		if(session.getAttribute("p")!=null) {	//if session is available
+			Admin p = (Admin) session.getAttribute("p");
+			username=p.getAdminUserName();
+			password =p.getAdminPassword();
+		}
+		else {					//is session is not available
+			username = request.getParameter("username");
+			password = request.getParameter("password");
+		}
+		AdminDaoInterface a = DaoFactory.createAdminObject();		//accessing Dao Layer
 		Admin admin = a.getAdminByCredentials(username, password);
 		int count = a.getCount();
-		if(admin != null) {
-			HttpSession session = request.getSession(true);
+		if(admin != null) {				//if valid details are entered for login by admin
 			session.setAttribute("id" , admin.getAdminId());
-			
+			session.setAttribute("p", admin);
 			request.setAttribute("name", admin.getAdminName());
 			request.setAttribute("email", admin.getAdminEmail());
 			request.setAttribute("phone", admin.getAdminPhone());
@@ -65,10 +69,10 @@ public class AdminLoginServlet extends HttpServlet {
 			rd.forward(request, response);
 			
 		}
-		else {
+		else {							//if invalid details are entered for login by admin
 //			request.setAttribute("message","Invalid Username or password.");
 			PrintWriter out = response.getWriter();
-			out.print("Invalid Username or Password");
+			out.print("<html><body>Invalid Username or Password</body></html>");
 			RequestDispatcher rd = request.getRequestDispatcher("/AdminLogin.jsp");
 			rd.include(request, response);
 		}
