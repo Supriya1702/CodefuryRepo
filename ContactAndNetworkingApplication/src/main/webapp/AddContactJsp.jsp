@@ -56,10 +56,10 @@
                     <td>Company</td>
                     <td><input type="text" name="company" /></td>
                 </tr>
-                 <tr>
+<!--                  <tr>
                     <td>Contact Image</td>
                     <td><input type="file" name="contactImage" /></td>
-                </tr>
+                </tr> -->
                 
                 
             </table>
