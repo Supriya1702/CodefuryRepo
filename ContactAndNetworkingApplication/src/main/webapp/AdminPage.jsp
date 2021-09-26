@@ -30,7 +30,7 @@
 	 </h2>
 	  <br>
 	  <br>
-	  <a href = "AdminServlet?option=disabled"> View can be disabled users</a>
+	  <a href = "AdminServlet?option=disabled"> Users to be Disabled </a>
 	 <footer id="footer">
 	  <small id="footer-text">&copy; CodeFury App Monsters</small>
 	</footer>

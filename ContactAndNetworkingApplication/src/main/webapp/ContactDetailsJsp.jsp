@@ -69,26 +69,26 @@
 	  	<tr  colspan=4 style="display:none" id=<%= c.getContact_id() %>>
 	  		<td></td>
 			<td >
-			<ul >
-			<li><B>Phone No: </B><%= (c.getPhone_no().equals("")) ? "Not Available" :  c.getPhone_no() %></li>
-	  		<li><B>gender: </B><%= (c.getGender().equals("")) ? "Not Available" :c.getGender() %></li>
-	  		<li><B>dateOfBirth: </B><%= (c.getDateOfBirth()==null) ? "Not Available" :c.getDateOfBirth()%></li>
-	  		<li><B>Address: </B><%= (c.getAddress().equals("")) ? "Not Available" :c.getAddress()%></li>
-	  		<li><B>city: </B><%= (c.getCity().equals("")) ? "Not Available" :c.getCity()%></li>
-	  		<li><B>state: </B><%= (c.getState().equals("")) ? "Not Available" :c.getState()%></li>
-	  		<li><B>country: </B><%= (c.getCountry().equals("")) ? "Not Available" :c.getCountry()%></li>
-	  		<li><B>company: </B><%= (c.getCompany().equals("")) ? "Not Available" :c.getCompany()%></li>
+			<ul style = "Background:White;">
+			<li class = "listItem"><B>Phone No: </B><%= (c.getPhone_no().equals("")) ? "Not Available" :  c.getPhone_no() %></li> </br>
+	  		<li class = "listItem"><B>gender: </B><%= (c.getGender().equals("")) ? "Not Available" :c.getGender() %></li> </br>
+	  		<li class = "listItem"><B>dateOfBirth: </B><%= (c.getDateOfBirth()==null) ? "Not Available" :c.getDateOfBirth()%></li> </br>
+	  		<li class = "listItem"><B>Address: </B><%= (c.getAddress().equals("")) ? "Not Available" :c.getAddress()%></li> </br>
+	  		<li class = "listItem"><B>city: </B><%= (c.getCity().equals("")) ? "Not Available" :c.getCity()%></li> </br>
+	  		<li class = "listItem"><B>state: </B><%= (c.getState().equals("")) ? "Not Available" :c.getState()%></li> </br>
+	  		<li class = "listItem"><B>country: </B><%= (c.getCountry().equals("")) ? "Not Available" :c.getCountry()%></li> </br>
+	  		<li class = "listItem"><B>company: </B><%= (c.getCompany().equals("")) ? "Not Available" :c.getCompany()%></li> </br>
 	  		</ul>
 	  		</td>
 	  	</tr>
 	  <%
   }
   	%>
-  	
+  	</div>
   </table>
   <form action="DeleteContact" method="post">
     <input type="text" style="display:none" name="labelcon" id="labelcon" value="0" ></label>
-  	<button  type="submit" >Delete Selected</button>
+ <br> <br>	<button  type="submit" >Delete Selected</button>
   	</form>
 	<footer id="footer">
 	  <small id="footer-text">&copy; CodeFury App Monsters</small>

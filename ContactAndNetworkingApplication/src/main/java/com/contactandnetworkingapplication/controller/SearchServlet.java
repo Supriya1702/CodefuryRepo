@@ -45,7 +45,7 @@ public class SearchServlet extends HttpServlet {
 			
 			SearchDaoInterface sd = DaoFactory.createSearchObject();
 			List<User> list = sd.searchByCityDao(u);
-			if(list.size()>0) {		//users found
+			if(list != null && list.size()>0) {		//users found
 				request.setAttribute("list",list);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
@@ -64,7 +64,7 @@ public class SearchServlet extends HttpServlet {
 			
 			SearchDaoInterface sd = DaoFactory.createSearchObject();
 			List<User> list = sd.searchbyStateDao(u);
-			if(list.size()>0) {		//users found
+			if(list != null && list.size()>0) {		//users found
 				request.setAttribute("list",list);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
@@ -83,7 +83,7 @@ public class SearchServlet extends HttpServlet {
 			
 			SearchDaoInterface sd = DaoFactory.createSearchObject();
 			List<User> list = sd.searchbyCompanyDao(u);
-			if(list.size()>0) {		//users found
+			if(list != null && list.size()>0) {		//users found
 				request.setAttribute("list",list);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SearchUser.jsp");
 				rd.forward(request, response);
