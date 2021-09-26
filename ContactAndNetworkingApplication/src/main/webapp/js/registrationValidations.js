@@ -5,7 +5,7 @@
         var uname = $("#fullNameId").val();
       
         if( uname == "" || uname == null)
-            alert("Name cannot be empty") ;  
+            alert("Name cannot be empty");  
         else if( uname.length < 6)
             alert("Name should be at least 6 characters");
         else if(!regexName.test(uname))
@@ -43,7 +43,7 @@
 
     function underAgeValidate(dateString) {
         var dateString = $('#dobId').val();
-        var dates = dateString.split("-");
+        var dates = dateString.split("-"); 
         var d = new Date();
 
         var userday = dates[2];
