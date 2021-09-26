@@ -14,7 +14,7 @@
 <c:url var="logout" value="AdminLogout.jsp">
 </c:url>
 <input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
-	<h2>	Hello <%= request.getAttribute("name")%> : <br>
+	<h2>	Hello <%= request.getAttribute("name")%>  <br>
 	
 	Your Details : <br>
 	Email : <%= request.getAttribute("email") %> <br>
@@ -28,7 +28,7 @@
 	  %> --%>
 	  <br>
 	  <br>
-	  <a href = "AdminServlet?option=disabled"> View can be disabled users</a>
+	  <a href = "AdminServlet?option=disabled"> Users to disable </a>
 	<!--   <h2>
 	 	<a href="/AdminServlet?option=disabled"> View Statistics </a>
 	 </h2>

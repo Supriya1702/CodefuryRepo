@@ -38,7 +38,7 @@ public class AdminServlet extends HttpServlet {
 			
 			
 			if(hp.size() == 0) {
-				request.setAttribute("message","No friends to show.");
+				request.setAttribute("message","No users to show.");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminDisabledPage.jsp");
 				rd.forward(request, response);
 			}

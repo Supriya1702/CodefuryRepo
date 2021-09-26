@@ -31,9 +31,9 @@ value="" size="30" maxlength="2048" /></div>
 <br />
 <br />
 <br />
-<p><input type="submit" value="Login" onclick = "validateUserName()" class="btn" ></p>
+<p><input type="submit" value="Login" onclick = "validate()" class="btn" ></p>
 </form>
 
-
+<p><a href = "HomePage.jsp"> HomePage </a> </p>
 </body>
 </html>

@@ -65,19 +65,19 @@ public class RegistrationDao implements RegistrationDaoInterface {
 			
 			if(rs.next()) {
 				User res = new User();
-				res.setId(rs.getInt(1));
-				res.setName(rs.getString(2));
-				res.setEmail(rs.getString(3));
-				res.setPhoneno(rs.getLong(4));
-				res.setGender(rs.getString(5));
-				res.setDob(rs.getDate(6));
-				res.setAddress(rs.getString(7));
-				res.setCity(rs.getString(8));
-				res.setState(rs.getString(9));
-				res.setCountry(rs.getString(10));
-				res.setCompany(rs.getString(11));
-				res.setUsername(rs.getString(13));
-				res.setPassword(rs.getString(14));;
+				res.setId(rs.getInt("id"));
+				res.setName(rs.getString("fullname"));
+				res.setEmail(rs.getString("email"));
+				res.setPhoneno(rs.getLong("phone_no"));
+				res.setGender(rs.getString("gender"));
+				res.setDob(rs.getDate("dob"));
+				res.setAddress(rs.getString("address"));
+				res.setCity(rs.getString("city"));
+				res.setState(rs.getString("state"));
+				res.setCountry(rs.getString("country"));
+				res.setCompany(rs.getString("company"));
+				res.setUsername(rs.getString("username"));
+				res.setPassword(rs.getString("password"));
 				System.out.println(res.toString());
 				return res;
 			}
