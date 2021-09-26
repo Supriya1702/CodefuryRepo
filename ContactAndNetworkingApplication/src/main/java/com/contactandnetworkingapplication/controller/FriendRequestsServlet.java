@@ -40,7 +40,6 @@ public class FriendRequestsServlet extends HttpServlet {
 			int id=(int) session.getAttribute("id");
 			User u = new User();
 			u.setId(id);
-			System.out.println("user id " + session.getAttribute("id"));
 			List<FriendRequest> list=ud.viewFriendRequestsDao(u);
 			
 			if(list.size()>0) {
@@ -86,7 +85,6 @@ public class FriendRequestsServlet extends HttpServlet {
 			FriendRequest f = new FriendRequest();
 			f.setFriend_request_pk(id);
                 
-			System.out.println(f.getFriend_request_pk());
 			int res=ud.ignoreFriendRequestDao(f);
 			
 			if(res==1) {
@@ -110,7 +108,6 @@ public class FriendRequestsServlet extends HttpServlet {
 			f.setFriend_request_pk(id);
 			f.setSender_id(sender_id);
 			f.setReceiver_id(receiver_id);
-			System.out.println(f.getFriend_request_pk() + " " + f.getSender_id() + " " + f.getReceiver_id());
 			int res=ud.blockFriendRequestDao(f);
 			
 			if(res==1) {

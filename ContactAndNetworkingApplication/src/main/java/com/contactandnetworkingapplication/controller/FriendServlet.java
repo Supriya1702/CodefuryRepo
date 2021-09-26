@@ -81,13 +81,11 @@ public class FriendServlet extends HttpServlet {
 		else if(option.equals("block")){	//if block user is selected
 			HttpSession session = request.getSession(true);
 			int id=(int) session.getAttribute("id");
-//			u.setId(id);
 			
 			System.out.println("user id a ");
 			FriendDaoInterface ud = DaoFactory.createFriend();
 			HashMap<Integer, String> hp = ud.viewBlocked(id);
 			
-			//here
 			if(hp.size() == 0) {
 				request.setAttribute("message","No friends to show.");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/BlockedList.jsp");
@@ -106,13 +104,11 @@ public class FriendServlet extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			int user_id=(int) session.getAttribute("id");
 			int blocked_id = Integer.parseInt(request.getParameter("blocked_id"));
-//			u.setId(id);
 			
 			System.out.println("user id a " + user_id);
 			System.out.println("blocked id a " + blocked_id);
 			FriendDaoInterface ud = DaoFactory.createFriend();
 			int res = ud.confirmBlocked(user_id, blocked_id);
-			//here
 			
 			if(res==1) {
 				request.setAttribute("message","Friend Removed");
@@ -125,7 +121,6 @@ public class FriendServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
-		//System.out.println("fsdfds");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

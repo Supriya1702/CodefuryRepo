@@ -23,7 +23,7 @@ public class AddContact extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+	//creating ContactDAOImpl object to save data to database.
     ContactDAOImpl contactdaoImpl ;
     public void init(){
     	contactdaoImpl= new ContactDAOImpl();

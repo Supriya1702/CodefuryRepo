@@ -23,7 +23,6 @@ public class BlockUserServlet extends HttpServlet {
        
     public BlockUserServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	
