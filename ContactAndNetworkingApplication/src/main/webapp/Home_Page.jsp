@@ -5,7 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home Page</title>
-<link href="css/Home.css" rel="stylesheet"></link> 
+<!-- <link href="css/Home.css" rel="stylesheet"></link>  -->
+<link href="css/home.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
 
 </head>

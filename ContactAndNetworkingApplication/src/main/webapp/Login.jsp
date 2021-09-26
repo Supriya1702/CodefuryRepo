@@ -62,6 +62,6 @@ body{
 	
 	</div>
 	 <div >${ message }</div>
-	 <center><a href="Home_Page.jsp" style="color: black">Go back to Home Page</a></center>
+	 <center><a href="HomePage.jsp" style="color: black">Go back to Home Page</a></center>
 </body>
 </html>

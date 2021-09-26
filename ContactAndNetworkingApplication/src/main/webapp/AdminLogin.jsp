@@ -33,7 +33,7 @@ value="" size="30" maxlength="2048" /></div>
 <br />
 <p><input type="submit" value="Login" onclick = "validate()" class="btn" ></p>
 </form>
-<center><a href="Home_Page.jsp" style="color: red">Go back to Home Page</a></center>
+<center><a href="HomePage.jsp" style="color: red">Go back to Home Page</a></center>
 
 </body>
 </html>
