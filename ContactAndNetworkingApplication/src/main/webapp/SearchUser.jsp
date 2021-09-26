@@ -10,10 +10,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Search Users</title>
-<link rel="stylesheet" type="text/css" href="css/searchUserStyles.css">
+<link rel="stylesheet" type="text/css" href="css/background.css">
 <script src="js/searchUser.js"></script>
 </head>
 <body>
+	<c:url var="logout" value="Logout.jsp">
+	</c:url>
+	<div align="right">
+	<input type="button" value = "Profile"/>
+	<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
+	</div>
 	<h1>Search Users</h1>
 	<form action="SearchServlet" method="post">  
 	    <input type="text" name="search"> 

@@ -7,8 +7,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title> Blocked List</title>
+<link href="css/background.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+	<c:url var="logout" value="Logout.jsp">
+	</c:url>
+	<div align="right">
+	<input type="button" value = "Profile"/>
+	<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
+	</div>
+
 		<% 
 			HashMap <Integer , String> hp = (HashMap <Integer , String>)request.getAttribute("info");
 			String message = (String)request.getAttribute("message");

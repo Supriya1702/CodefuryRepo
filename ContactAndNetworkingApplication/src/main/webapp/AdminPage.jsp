@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <!-- <link href="AdminLoginCss.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/background.css" rel="stylesheet" type="text/css" />
 <title>Admin Page</title>
 </head>
 

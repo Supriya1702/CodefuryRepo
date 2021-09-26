@@ -9,6 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pending Friend Requests</title>
+<link href="css/background.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<h1> Pending Friend Requests</h1>

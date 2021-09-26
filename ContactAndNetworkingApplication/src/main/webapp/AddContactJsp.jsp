@@ -1,13 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Add Contacts Page</title>
+<link href="css/background.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+	<c:url var="logout" value="Logout.jsp">
+	</c:url>
+	<div align="right">
+	<input type="button" value = "Profile"/>
+	<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
+	</div>
+
         <h1>Add Contact</h1>
         <form action="ContactServlet" method="post">
         

@@ -9,6 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Friends</title>
+<link href="css/background.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<h1> Friends list</h1>

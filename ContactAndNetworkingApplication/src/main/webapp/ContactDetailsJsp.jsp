@@ -12,9 +12,17 @@
 <head>
 <meta charset="UTF-8"> 
 <title>ContatcDetails</title>
+<link href="css/background.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+	<c:url var="logout" value="Logout.jsp">
+	</c:url>
+	<div align="right">
+	<input type="button" value = "Profile"/>
+	<input type="button" value = "Logout" onclick="window.location.href='${logout}'"/>
+	</div>
+
 
  <jsp:useBean id="contact" class="com.contactandnetworkingapplication.model.Contacts" />
   <%
