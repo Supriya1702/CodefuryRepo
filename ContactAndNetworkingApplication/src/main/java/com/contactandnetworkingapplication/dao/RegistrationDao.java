@@ -96,4 +96,34 @@ public class RegistrationDao implements RegistrationDaoInterface {
 	
 	}
 
+	@Override
+	public int checkUserDao(String email) {
+		ConnectionUtil a = new ConnectionUtil();
+		Connection c=a.createConnection();
+		PreparedStatement p;
+		try {
+			p = c.prepareStatement("select * from disabledusers where email = ?");
+			p.setString(1,email);
+			ResultSet rs = p.executeQuery();
+			if(rs.next()) {
+				return -1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			p = c.prepareStatement("select * from user where email = ?");
+			p.setString(1,email);
+			ResultSet rs = p.executeQuery();
+			if(rs.next()) {
+				return -2;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 1;
+	}
+
 }

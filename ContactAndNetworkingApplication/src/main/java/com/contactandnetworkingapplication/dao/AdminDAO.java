@@ -156,74 +156,59 @@ public class AdminDAO implements AdminDaoInterface {
 		}
 		PreparedStatement p=null;
 		int res1=0,res2=0;
+		String email = null;
 		try {
-			p = c.prepareStatement("delete from blockedusers where user_id=?");
+			p = c.prepareStatement("delete from blockedusers where (user_id=?) or (blocked_id=?)");
 			p.setInt(1,id);
-			
+			p.setInt(2, id);
 			res1 = p.executeUpdate();
 			System.out.println("1st " + res1);
-			
-			if(res1!= -1) {
-				p = c.prepareStatement("delete from blockedusers where blocked_id=?");
-				p.setInt(1,id);
-				
-				res1 = p.executeUpdate();
-				System.out.println("2nd " + res1);
-			}
 			if(res1  != -1) {
-				p = c.prepareStatement("delete from contacts where contact_id=?");
+				p = c.prepareStatement("delete from contacts where (contact_id=?) or (user_id=?)");
 				p.setInt(1,id);
-				
+				p.setInt(2, id);
 				res1 = p.executeUpdate();
 				System.out.println("3rd " + res1);
 			}if(res1 != -1) {
-				p = c.prepareStatement("delete from contacts where user_id=?");
+				p = c.prepareStatement("delete from friendrequest where (sender_id=?) or  (receiver_id=?)");
 				p.setInt(1,id);
-				
-				res1 = p.executeUpdate();
-				System.out.println("4th " + res1);
-			}if(res1 != -1) {
-				p = c.prepareStatement("delete from friendrequest where sender_id=?");
-				p.setInt(1,id);
-				
+				p.setInt(2, id);
 				res1 = p.executeUpdate();
 				System.out.println("5th " + res1);
 			}if(res1 != -1) {
-				p = c.prepareStatement("delete from friendrequest where receiver_id=?");
+				p = c.prepareStatement("delete from friends where (user_id=?) or (friend_id=?)");
 				p.setInt(1,id);
-				
-				res1 = p.executeUpdate();
-				System.out.println("6th " + res1);
-			}if(res1 != -1) {
-				p = c.prepareStatement("delete from friends where user_id=?");
-				p.setInt(1,id);
-				
+				p.setInt(2, id);
 				res1 = p.executeUpdate();
 				System.out.println("7th " + res1);
+			System.out.println("8th " + res1);
 			}if(res1 != -1) {
-				p = c.prepareStatement("delete from friends where friend_id=?");
-				p.setInt(1,id);
-				
-				res1 = p.executeUpdate();
-				System.out.println("8th " + res1);
-			}if(res1 != -1) {
-				p=c.prepareStatement("insert into disabledusers value (?)");
-				p.setInt(1, id);
-				
-				res2=p.executeUpdate();
+				PreparedStatement ps = c.prepareStatement("SELECT email from user where id=?");
+				ps.setInt(1, id);
+				ResultSet rs = ps.executeQuery();
+				if (rs.next()) {
+					email  =  rs.getString("email");
+				}
 				System.out.println("9th " + res1);
+			}				
+			if(res1 != -1) {
+				p=c.prepareStatement("insert into disabledusers value (?)");
+				p.setString(1, email);
+				res2=p.executeUpdate();
+				System.out.println("10th " + res1);
 			}if(res2 != -1) {
 				p = c.prepareStatement("delete from user where id=?");
 				p.setInt(1,id);
 				
 				res1 = p.executeUpdate();
-				System.out.println("10th " + res1);
+				System.out.println("11th " + res1);
 			}
 			if(res1!=-1 && res2 != -1)
 				return 1;
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
+			return 0;
 		}
 		finally {
 			try {
@@ -232,6 +217,7 @@ public class AdminDAO implements AdminDaoInterface {
 			} 
 			catch (SQLException e) {
 				e.printStackTrace();
+				return 0;
 			}
 		}
 		return 1;
