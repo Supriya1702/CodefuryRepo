@@ -16,27 +16,39 @@
 	  <li><a class="active" href="AdminLoginServlet">Home</a></li>
 	  <li style="float:right"><a href="AdminLogout.jsp">Logout</a></li>
 	</ul>
+<center>
+
 		<% 
 			HashMap <Integer , String> hp = (HashMap <Integer , String>)request.getAttribute("info");
 			String message = (String)request.getAttribute("message");
 			if(hp != null){
 				%>
-				<center>
-				<table border="5px">
+		<table>
+  	<tr>
+  		
+  		<th>Id</th>
+  		<th>Location</th>
+  		<th>Select</th>
+  	</tr>			
+				
 		<%			for(HashMap.Entry<Integer, String> entry : hp.entrySet()) {
 					Integer id = entry.getKey();
 					String location = entry.getValue();
 		%>
-					<c:url var="accept" value="AdminServlet">
-	  						<c:param name="option" value="accept"></c:param>
-	  						<c:param name="id" value= "<%= id.toString() %>"></c:param>
-					</c:url>
-					<tr><td><%=id%></td><td><%=location %></td>
-					<td><input type="button" onclick="window.location.href='${accept}'" value="Disable"></td>
-				</tr>
+				  <tr>
+	  		<td><%= id %></td>
+	  		<td><%= location %></td>
+	  		<td><input type="checkbox" id ="chbox" class ="selectedContact" onclick="deleteContact()" value=<%=  id %>></td>
+	  		   	</tr>	
+				<br>
 	<% 		} %>
-			</table>
-			</center>
+			
+			
+ </table>
+ 			<form action="AdminServlet?option=disable" method="post">
+    		<label><input type="text" style="display:none" name="labelcon" id="labelcon" value="0" ></label>
+			<br> <br>	<button  type="submit" >Delete Selected</button>
+  			</form>		
 	<%
 				}
 				else {
@@ -45,6 +57,30 @@
 		<h4><%= message  %></h4>
 	<% }
 	%>
+</center>
+<script type="text/javascript">
+function deleteContact(){
+	var list = document.getElementsByClassName("selectedContact");
+	var deleteUsers = [];
+	var delUse = "";
+	for (var i =0; i<list.length; i++){
+		if(list[i].checked==true){
+			delUse = delUse + list[i].value + "," ;
+			deleteUsers.push(list[i].value)
+			console.log(list[i].value)
+		}
+	}
+	if(deleteUsers != null){
+		console.log(deleteUsers);
+	var lab=document.getElementById("labelcon");
+	lab.value = delUse;
+	return true;
+	}
+	else{return false;}
+	console.log(delUse);
+	
+ }
+</script>
 	<footer id="footer">
 	  <small id="footer-text">&copy; CodeFury App Monsters</small>
 	</footer>
