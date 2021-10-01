@@ -14,6 +14,7 @@
 <link href="css/background.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
+
 </head>
 <body>
 	<%
@@ -47,12 +48,12 @@
 	<br/>
 	</div>
 	<br/><br/><br/><br/>
-	<table>
+	<table style="margin-left:20%;">
 	<tr>
-	<div class="cards">
+	<div class="cards" >
 		<td>
 		<div class="card">
-			<img src="https://cdn0.iconfinder.com/data/icons/business-dual-color-glyph-set-2/128/Address_book-512.png" style="width:20%","height:20%" class="card_image">
+			<img src="https://cdn0.iconfinder.com/data/icons/business-dual-color-glyph-set-2/128/Address_book-512.png" style="width:20%;height:20%" class="card_image">
 			<div class="content">
 				<a href="ContactDetailsJsp.jsp">View Contacts</a>
 			</div>
@@ -61,7 +62,7 @@
 		
 		<td>
 		<div class="card">
-			<img src="https://cdn2.iconfinder.com/data/icons/bussiness-management-supersolid/24/add_add_contact_create_new_person_user_add_friend-512.png" style="width:25%","height:10%" class="card_image">
+			<img src="https://cdn2.iconfinder.com/data/icons/bussiness-management-supersolid/24/add_add_contact_create_new_person_user_add_friend-512.png" style="width:25%;height:10%" class="card_image">
 			<div class="content">
 				<a href="AddContactJsp.jsp">Add New Contact</a>
 			</div>
@@ -70,7 +71,7 @@
 		
 		<td>
 		<div class="card">
-			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png" style="width:20%","height:10%" class="card_image">
+			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png" style="width:20%;height:10%" class="card_image">
 			<div class="content">
 				<a href="SearchUser.jsp">Search Users</a>
 			</div>
@@ -82,7 +83,7 @@
 		
 		<td>
 		<div class="card">
-			<img src="https://icon-library.com/images/connect-icon-png/connect-icon-png-18.jpg" style="width:20%","height:20%" class="card_image">
+			<img src="https://icon-library.com/images/connect-icon-png/connect-icon-png-18.jpg" style="width:20%;height:20%" class="card_image">
 			<div class="content">
 				<a href="FriendServlet?option=view">View Friends</a>
 			</div>
@@ -91,7 +92,7 @@
 		
 		<td>
 		<div class="card">
-			<img src="https://static.thenounproject.com/png/2714894-200.png" style="width:20%","height:20%" class="card_image">
+			<img src="https://static.thenounproject.com/png/2714894-200.png" style="width:20%;height:20%" class="card_image">
 			<div class="content">
 				<a href="FriendRequestsServlet?option=view">View Friend Requests</a>
 			</div>
@@ -100,7 +101,7 @@
 		
 		<td>
 		<div class="card">
-			<img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/block-person-1446662-1222337.png" style="width:20%","height:20%" class="card_image">
+			<img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/block-person-1446662-1222337.png" style="width:20% ;height:20%" class="card_image">
 			<div class="content">
 				<a href="FriendServlet?option=block">Blocked Users</a>
 			</div>
@@ -113,7 +114,7 @@
 	
 	</table>
 	<footer id="footer">
-	  <small id="footer-text">&copy; CodeFury App Monsters</small>
+	  <small id="footer-text">&copy; 2021 CodeFury App Monsters</small>
 	</footer>
 </body>
 </html>

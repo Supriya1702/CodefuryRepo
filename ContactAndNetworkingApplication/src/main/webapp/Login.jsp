@@ -13,9 +13,11 @@ body{
 	background-image: url("images/bg.jpg");
     background-color: #cccccc;
    }
+   
+   <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
 </style>
 </head>
-<body>
+<body> 
 	<div class="container" style="opacity:0.9;">
 	  <div class="row col-md-7 col-md-offset-3">
 	    <div class="panel panel-primary" style="margin-top:30%; margin-bottom:50px;">
@@ -31,7 +33,7 @@ body{
             <label for="emailId" style="font-size:18px;color:#0066A2;">Email :</label>  
         </div>
         <div class="col-md-4 mb-4" >
-                <input type = "email" name="email" placeholder="Enter email"  id="emailId" required >
+                <input type = "email" name="email" class="form-control" placeholder="Enter email"  id="emailId" required >
             </div>
         </div>
         <div class="row">
@@ -39,7 +41,7 @@ body{
              <label for="passwordId" style="font-size:18px;color:#0066A2;">Password:</label>
         </div>
         <div class="col-md-4 mb-4" >
-                  <input type = "password" placeholder="Enter password" name="password"  id="passwordId" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Include one uppercase,lowercase and digit">
+                  <input type = "password" placeholder="Enter password" class="form-control"   name="password"  id="passwordId" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Include one uppercase,lowercase and digit">
             </div>
         </div>
         
@@ -53,15 +55,13 @@ body{
        </div>
          <div >&nbsp;</div>
          
-	     <div class="panel-footer text-right">
-             <small>&copy; CodeFury App Monsters</small> 
-           </div>
-	  </div>
-
+	  <div style="text-align:center; color:red ; font-size:1.2em">${ message }</div>
+         
 	</div>
-	
-	</div>
-	 <div >${ message }</div>
-	 <center><a href="HomePage.jsp" style="color: black">Go back to Home Page</a></center>
+	 <a href="HomePage.jsp" style="color:black;font-weight:bold; font-size:15px; text-align:center;">Go back to Home Page</a>
+	 
+   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
 </body>
 </html>

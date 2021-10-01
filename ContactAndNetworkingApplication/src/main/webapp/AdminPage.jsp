@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!-- <link href="AdminLoginCss.css" rel="stylesheet" type="text/css" /> -->
 <link href="css/background.css" rel="stylesheet" type="text/css" />
 <title>Admin Page</title>
 <link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
@@ -19,12 +18,15 @@
 	  <li style="float:right"><a href="AdminLogout.jsp">Logout</a></li>
 	</ul>
 
-	<h2>	Hello <%= request.getAttribute("name")%> : <br>
+	<h2>	Hello <%= request.getAttribute("name")%> <br>
 	
-	Your Details : <br>
-	Email : <%= request.getAttribute("email") %> <br>
-	Phone No : <%= request.getAttribute("phone") %> <br>
-	 </h2>
+	<ul style="background-color:white;">
+	
+	<li>Email : <%= request.getAttribute("email") %> </li>
+	<li>Phone No : <%= request.getAttribute("phone") %> </li>
+
+	</ul>
+
 	 <h2>
 	 	The Count of Active users are : <%= request.getAttribute("count") %>
 	 </h2>

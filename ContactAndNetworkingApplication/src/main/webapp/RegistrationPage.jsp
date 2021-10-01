@@ -6,11 +6,8 @@
 <title>User Registration</title>
 <link rel="stylesheet" type="text/css" href="css/registrationStyles.css">  
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 body{
@@ -19,6 +16,10 @@ body{
    }
    label{
    color:#0066A2;
+   }
+   
+   .panel-footer{
+   background-color:color:#0066A2;
    }
 </style>
 </head>
@@ -127,16 +128,16 @@ body{
          </form>
          
            </div>
-           <div class="panel-footer text-right">
-             <small>&copy; CodeFury App Monsters</small> 
-           </div>
+          
 
         </div>
 
        </div>
 
     </div>
-   
+    <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
 
 <script src="js/registrationValidations.js"></script> 
 </body>

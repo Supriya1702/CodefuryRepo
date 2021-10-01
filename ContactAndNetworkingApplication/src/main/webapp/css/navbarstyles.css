@@ -31,7 +31,7 @@ li a:hover:not(.active) {
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #0066A2;
 }
 li.listItem{
 	display : "inline-block";

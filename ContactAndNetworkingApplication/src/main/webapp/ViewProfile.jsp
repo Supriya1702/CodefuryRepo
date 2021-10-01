@@ -9,6 +9,37 @@
 <title>Profile</title>
 <link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css">
+<link href="css/background.css" rel="stylesheet" type="text/css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	<style>
+	.aligned { margin-left: 43%;
+            display: flex;
+            align-items: center;
+        }
+           
+        h1 {
+            padding: 10px;
+        }
+                td, th {
+	text-align: center;
+	
+    }
+   
+
+
+	</style>
+	
 </head>
 <body>
 	<%
@@ -27,10 +58,10 @@
 	<%
 		User p = (User) session.getAttribute("user");		
 	%>
-	<h1>Profile</h1>
+	 <div  class="aligned" align="center" ><img src="images/profile_img.png" style="width:70px;"><h1 style="color:#0066A2; font-weight:bold;">Profile</h1></div>
 	<center>
 	<div>
-		<table>
+		<table class="table table-dark table-bordered table-hover" style="width: 60%; margin: auto; opacity:0.8;">
 			<tr>
 				<td>Full Name</td>
 				<td>
@@ -135,7 +166,7 @@
 					<%
 						if(p.getState()!=null) {
 					%>
-					<%=p.getDob() %>
+					<%=p.getState() %>
 					<% }
 						else {
 					%>
@@ -147,9 +178,9 @@
 				<td>Company</td>
 				<td>
 					<%
-						if(p.getState()!=null) {
+						if(p.getCompany()!=null) {
 					%>
-					<%=p.getState() %>
+					<%=p.getCompany() %>
 					<% }
 						else {
 					%>
@@ -174,8 +205,8 @@
 		</table>
 	</div>
 	</center>
-	<footer id="footer">
-	  <small id="footer-text">&copy; CodeFury App Monsters</small>
-	</footer>
+	<div id="footer" class="fixed-bottom">
+	  <small id="footer-text">&copy; 2021 CodeFury App Monsters</small>
+	</div>
 </body>
 </html>
