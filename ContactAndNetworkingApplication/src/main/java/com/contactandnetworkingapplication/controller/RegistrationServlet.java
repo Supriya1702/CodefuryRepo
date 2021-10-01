@@ -39,34 +39,48 @@ public class RegistrationServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-
-		User u = new User();
-		u.setName(name);
-		u.setEmail(email);
-		u.setPhoneno(phoneno);
-		u.setGender(gender);
-		u.setDob(dob);
-		u.setAddress(address);
-		u.setCity(city);
-		u.setState(state);
-		u.setCountry(country);
-		u.setCompany(company);
-		u.setUsername(username);
-		u.setPassword(password);
-		
 		RegistrationDaoInterface ud = DaoFactory.createRegistrationObject();	//accessing Dao Layer
-		int res=ud.registerUserDao(u);
+		int res = ud.checkUserDao(email);
+		if(res == 1) {
+			User u = new User();
+			u.setName(name);
+			u.setEmail(email);
+			u.setPhoneno(phoneno);
+			u.setGender(gender);
+			u.setDob(dob);
+			u.setAddress(address);
+			u.setCity(city);
+			u.setState(state);
+			u.setCountry(country);
+			u.setCompany(company);
+			u.setUsername(username);
+			u.setPassword(password);
+			
+			
+			int res1= ud.registerUserDao(u);
+			
+			if(res1>0) {			//if registration is successful
+				request.setAttribute("message","Registration successful. <a href=Login.jsp>Sign In</a>");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
+				rd.forward(request, response);
+			}
+			else {				//if unable to register
+				request.setAttribute("message","Could not register.");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
+				rd.forward(request, response);
+			}
+		}
+		else if(res == -1){					// if user is disabled
+				request.setAttribute("message","Could not register. User with this email is being disabled");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
+				rd.forward(request, response);
+		}
+		else { 								// if user with email is already present
+			request.setAttribute("message","Could not register. User with this email is already registered");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
+			rd.forward(request, response);
+		}
 		
-		if(res>0) {			//if registration is successful
-			request.setAttribute("message","Registration successful. <a href=Login.jsp>Sign In</a>");
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
-			rd.forward(request, response);
-		}
-		else {				//if unable to register
-			request.setAttribute("message","Could not register.");
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
-			rd.forward(request, response);
-		}
 		
 	}
 
