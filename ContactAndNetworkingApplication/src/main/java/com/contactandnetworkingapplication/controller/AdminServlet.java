@@ -1,7 +1,9 @@
 package com.contactandnetworkingapplication.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.contactandnetworkingapplication.dao.AdminDaoInterface;
+import com.contactandnetworkingapplication.dao.ContactDAOImpl;
 import com.contactandnetworkingapplication.utility.DaoFactory;
 
 /**
@@ -47,20 +50,39 @@ public class AdminServlet extends HttpServlet {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminDisabledPage.jsp");
 				rd.forward(request, response);
 			}
-		} else if(option.equals("accept")) {
-			int id = Integer.parseInt(request.getParameter("id"));
-			AdminDaoInterface a = DaoFactory.createAdminObject();
-			int res = a.confirmDisabled(id);
-			if(res==1) {
-				request.setAttribute("message","Disabled Successfully");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminServlet?option=disabled");
-				rd.forward(request, response);
-			}
-			else {
-				request.setAttribute("message","Was unable to disable user. Please try again.");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminServlet?option=disabled");
-				rd.forward(request, response);
-			}
+		} else if(option.equals("disable")) {
+			String selectedUsers = request.getParameter("labelcon");
+			String[] listOfUsers = selectedUsers.split(",");
+			if(selectedUsers=="") {
+				request.setAttribute("message","No user selected");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminDisabledPage.jsp");
+				rd.include(request, response);
+			}else {
+				
+				System.out.println("selectedUsers ... "+selectedUsers);
+				System.out.println("selectedUers length... "+listOfUsers.length);
+				AdminDaoInterface a = DaoFactory.createAdminObject();
+				int flag = 0;
+				for (String s: listOfUsers) {
+					int id = Integer.parseInt(s);
+					int res = a.confirmDisabled(id);
+					if(res != 1) {
+						request.setAttribute("message","Was unable to disable user. Please try again.");
+						flag = 1;
+						break;
+					}
+				}
+				if(flag == 0) {
+					request.setAttribute("message","Disabled Successfully");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminServlet?option=disabled");
+					rd.forward(request, response);
+				}
+				else {
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminServlet?option=disabled");
+					rd.forward(request, response);
+				}
+			
+			}	
 		}
 		
 		

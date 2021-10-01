@@ -18,7 +18,7 @@
 	  <li><a class="active" href="AdminLoginServlet">Home</a></li>
 	  <li style="float:right"><a href="AdminLogout.jsp">Logout</a></li>
 	</ul>
-
+	<center>
 	<h2>	Hello <%= request.getAttribute("name")%> : <br>
 	
 	Your Details : <br>
@@ -30,7 +30,10 @@
 	 </h2>
 	  <br>
 	  <br>
-	  <a href = "AdminServlet?option=disabled"> Users to be Disabled </a>
+	  <form action="AdminServlet?option=disabled" method="post">
+	  <br> <br>	<button  type="submit" >Disable Users</button>
+	 <!--  <a href = "AdminServlet?option=disabled"> Users to be Disabled </a> -->
+	  </center>
 	 <footer id="footer">
 	  <small id="footer-text">&copy; CodeFury App Monsters</small>
 	</footer>
