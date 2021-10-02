@@ -222,7 +222,115 @@ public class AdminDAO implements AdminDaoInterface {
 		}
 		return 1;
 	}
-	
-	
+
+	@Override
+	public HashMap<Integer, String> getDeleteUser() {
+		System.out.println("Let's delete some users");
+		ConnectionUtil a = new ConnectionUtil();
+		Connection c=a.createConnection();
+		PreparedStatement ps;
+		HashMap <Integer, String> map = new HashMap<>();
+		
+		try {
+			
+			ps = c.prepareStatement("Select * from userstats where intime < NOW() - INTERVAL 10 DAY;");
+			ResultSet rs = ps.executeQuery();
+			System.out.println("after query");
+				while(rs.next()) {
+					int id= rs.getInt("userid");
+					try {
+						PreparedStatement pstmt= c.prepareStatement("Select fullname from user where id= "+id+";" );
+						ResultSet userDetails =  pstmt.executeQuery();
+						if(userDetails.next()) {
+						map.put(id,userDetails.getString("fullname"));
+						//System.out.println(id+" : "+userDetails.getString("fullname"));
+						}
+					}catch(SQLException e) {
+						e.printStackTrace();
+					}
+					
+				}
+			return map;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int confirmDelete(int id) {
+		ConnectionUtil a = new ConnectionUtil();
+		Connection c=a.createConnection();
+		System.out.println("From here everything starts" + id);
+		try {
+			c.setAutoCommit(false);
+		} 
+		catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		PreparedStatement p=null;
+		int res1=0,res2=0;
+		String email = null;
+		try {
+			p = c.prepareStatement("delete from blockedusers where (user_id=?) or (blocked_id=?)");
+			p.setInt(1,id);
+			p.setInt(2, id);
+			res1 = p.executeUpdate();
+			System.out.println("1st " + res1);
+			if(res1  != -1) {
+				p = c.prepareStatement("delete from contacts where (contact_id=?) or (user_id=?)");
+				p.setInt(1,id);
+				p.setInt(2, id);
+				res1 = p.executeUpdate();
+				System.out.println("3rd " + res1);
+			}
+			if(res1  != -1) {
+				p = c.prepareStatement("delete from userstats where (userid=?)");
+				p.setInt(1,id);
+				res1 = p.executeUpdate();
+				System.out.println("3rd " + res1);
+				}
+			if(res1 != -1) {
+				p = c.prepareStatement("delete from friendrequest where (sender_id=?) or  (receiver_id=?)");
+				p.setInt(1,id);
+				p.setInt(2, id);
+				res1 = p.executeUpdate();
+				System.out.println("5th " + res1);
+			}if(res1 != -1) {
+				p = c.prepareStatement("delete from friends where (user_id=?) or (friend_id=?)");
+				p.setInt(1,id);
+				p.setInt(2, id);
+				res1 = p.executeUpdate();
+				System.out.println("7th " + res1);
+			System.out.println("8th " + res1);
+			}
+			if(res1 != -1) {
+				p = c.prepareStatement("delete from user where id=?");
+				p.setInt(1,id);
+				
+				res1 = p.executeUpdate();
+				System.out.println("11th " + res1);
+			}
+			if(res1!=-1 )
+				return 1;
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+		finally {
+			try {
+				c.commit();
+				c.close();
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+				return 0;
+			}
+		}
+		return 1;
+	}
 	
 }

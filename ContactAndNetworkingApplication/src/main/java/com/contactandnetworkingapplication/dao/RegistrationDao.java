@@ -1,9 +1,11 @@
 package com.contactandnetworkingapplication.dao;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import com.contactandnetworkingapplication.model.User;
 
@@ -54,8 +56,9 @@ public class RegistrationDao implements RegistrationDaoInterface {
 	public User loginUserDao(User u) {		//checking whether user is registered to login or not
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
-		PreparedStatement p;
+		PreparedStatement p , selectStats;
 		try {
+			
 			p = c.prepareStatement("select * from user where email = ? and password = ?");
 			p.setString(1, u.getEmail());
 			p.setString(2,u.getPassword());
@@ -78,8 +81,32 @@ public class RegistrationDao implements RegistrationDaoInterface {
 				res.setUsername(rs.getString("username"));
 				res.setPassword(rs.getString("password"));
 				//System.out.println(res.toString());
+				
+				try {
+					int id=rs.getInt("id");
+					selectStats= c.prepareStatement("Select * from userstats where userid = "+id+";");	
+					ResultSet rss= selectStats.executeQuery();
+					if(rss.next()) {
+						PreparedStatement ps = c.prepareStatement("Update userstats set intime=CURRENT_TIMESTAMP where userid=?;");
+						try {
+							ps.setInt(1,rs.getInt("id"));
+							ps.executeUpdate();
+						}catch(SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					else {
+						PreparedStatement ps = c.prepareStatement("Insert into userstats(userid,intime) values(?,CURRENT_TIMESTAMP);");
+						ps.setInt(1,rs.getInt("id"));
+						ps.executeUpdate();
+					}
+				}catch(SQLException ee){
+					ee.printStackTrace();
+				}
+				
 				return res;
 			}
+			
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();

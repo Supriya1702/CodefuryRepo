@@ -34,8 +34,48 @@ public class AdminServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String option = request.getParameter("option");
-		if(option.equals("disabled")) {
+		if(option.equals("delete")) {
+			String selectedUsers = request.getParameter("labelcon");
+			String[] listOfUsers = selectedUsers.split(",");
+			if(selectedUsers=="") {
+				request.setAttribute("message","No user selected");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminDeletePage.jsp");
+				rd.include(request, response);
+			}else {
+				
+				System.out.println("selectedUsers ... "+selectedUsers);
+				System.out.println("selectedUers length... "+listOfUsers.length);
+				AdminDaoInterface a = DaoFactory.createAdminObject();
+				int flag = 0;
+				for (String s: listOfUsers) {
+					int id = Integer.parseInt(s);
+					int res = a.confirmDelete(id);
+					if(res != 1) {
+						request.setAttribute("message","Was unable to delete user. Please try again.");
+						flag = 1;
+						break;
+					}
+				}
+				if(flag == 0) {
+					request.setAttribute("message","Deleted Successfully");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminDeletePage.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/AdminDeletePage.jsp");
+					rd.forward(request, response);
+				}
+			
+			}	
+		}else if(option.equals("disabled")) {
 			AdminDaoInterface a= DaoFactory.createAdminObject();
 			HashMap<Integer, String> hp = a.getDisabledUsers();
 			
@@ -86,14 +126,6 @@ public class AdminServlet extends HttpServlet {
 		}
 		
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

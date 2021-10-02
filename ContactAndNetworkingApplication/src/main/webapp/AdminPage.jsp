@@ -35,11 +35,14 @@
 	  <br>
 	  <form action="AdminServlet?option=disabled" method="post">
 	  <br> <br>	<button  type="submit" >Disable Users</button>
+	  </form>
+	  <a style="padding:10px; color:green;" href="AdminDeletePage.jsp" >Inactive Users</a>
 	 <!--  <a href = "AdminServlet?option=disabled"> Users to be Disabled </a> -->
 	  </center>
 	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
              <small>&copy; 2021 CodeFury App Monsters</small>
            </div>
+           
 
 </body>
 </html>

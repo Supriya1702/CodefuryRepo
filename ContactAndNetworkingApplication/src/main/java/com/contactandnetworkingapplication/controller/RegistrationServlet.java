@@ -71,12 +71,12 @@ public class RegistrationServlet extends HttpServlet {
 			}
 		}
 		else if(res == -1){					// if user is disabled
-				request.setAttribute("message","Could not register. User with this email is being disabled");
+				request.setAttribute("message","Could not register.This email has been disabled");
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
 				rd.forward(request, response);
 		}
 		else { 								// if user with email is already present
-			request.setAttribute("message","Could not register. User with this email is already registered");
+			request.setAttribute("message","Could not register.This email is already registered with us.");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/RegistrationPage.jsp");
 			rd.forward(request, response);
 		}

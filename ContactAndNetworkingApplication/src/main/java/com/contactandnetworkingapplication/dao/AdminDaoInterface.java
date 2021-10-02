@@ -14,6 +14,7 @@ public interface AdminDaoInterface {
 		int getCount();
 		HashMap<Integer , String> getDisabledUsers();
 		int confirmDisabled(int id);
-	
+		HashMap<Integer , String> getDeleteUser();
+		int confirmDelete(int id);
 
 }
