@@ -29,6 +29,10 @@
 
 <style>
 table{ opacity:0.8;}
+td, th {
+	text-align: center;
+	
+    }
 </style>
 
 </head>

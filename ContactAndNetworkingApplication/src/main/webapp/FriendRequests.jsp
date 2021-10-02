@@ -25,6 +25,10 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 table{opacity:0.8;}
+ td, th {
+	text-align: center;
+	
+    }
 </style>
 </head>
 <body>
