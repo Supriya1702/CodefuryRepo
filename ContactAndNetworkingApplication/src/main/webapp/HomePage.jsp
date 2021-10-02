@@ -35,8 +35,9 @@ li{font-size: 1.5em;color:white;padding:10px;}
 			
 		  
 	</div>
-        <div class="panel-footer text-right fixed-bottom" >
+        <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
              <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div>   
+           </div> 
+  
 </body>
 </html>

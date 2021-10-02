@@ -127,9 +127,10 @@ td,th {
             
              <div style="color:green ;margin-left:45%; display:none;"><h4> ${ message }</h4></div>
            </form>
-        <div id="footer" class="fixed-bottom">
-	  		<small id="footer-text">&copy; 2021 CodeFury App Monsters</small>
-		</div>
+         <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
+
     </body>
 
 </html>
