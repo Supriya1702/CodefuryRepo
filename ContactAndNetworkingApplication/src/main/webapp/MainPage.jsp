@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.time.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.ParseException" %>
 <%@page import="com.contactandnetworkingapplication.model.User"%>
@@ -89,16 +89,23 @@ table.test {
 	%>
 	<div>
 		<h1>Welcome <%= res.getName() %></h1><br>
-		<%
-			Date date1 = new Date();
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			String s = formatter.format(date1);
-			String current_date = formatter.format(res.getDob());
-			if(s.equals(current_date)) {
-				
-		%>
-				<h1>Wish you a very Happy Birthday <%= res.getName() %></h1>
-		<%  } %>
+	<%
+            LocalDate dt = LocalDate.now();
+            int day = dt.getDayOfMonth();
+            int month = dt.getMonthValue();
+            Month month_name = dt.getMonth();
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String s = formatter.format(res.getDob());
+            LocalDate user_date = LocalDate.parse(s);
+            int user_day = user_date.getDayOfMonth();
+            int user_month = user_date.getMonthValue();
+            
+            if(day==user_day && month==user_month) {
+                
+        %>
+                <h2>Hey it's <%=month_name %> <%=day %>.<br>  Wish you a very Happy Birthday <%= res.getName() %>!!</h2>
+        <%  } %>
 	<br/>
 	</div>
 	<br/><br/><br/>
