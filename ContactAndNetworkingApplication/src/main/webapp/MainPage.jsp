@@ -18,10 +18,60 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
 
+th,td{
+
+border-radius: 10px;
+ }
+ 
+ .anchor-style {
+     color: #000;
+     text-transform: uppercase;
+     font-weight: bold;
+     font-style: italic;
+     padding-bottom: 10px;
+     padding-left:10px;
+}
+
+.polaroid{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+.card_image{
+ height:25%;
+ width:25%;
+}
+
+.polaroid img{
+background-color:white;
+border-radius: 8px;
+}
+
+.polaroid:hover{
+transform: scale(1.2);}
+
+.polaroid a{
+ color:white;
+}
+table.test td {
+ background-color:#343a40;
+  margin: 16px 16px 16px 16px;
+  padding: 16px 16px 16px 16px;
+}
+
+table.test {
+  border-collapse: separate;
+  border-spacing: 35px;
+  *border-collapse: expression('separate', cellSpacing='10px');
+}
+
+</style>
 </head>
 <body>
-	<%
+
+<%
 	if(session.getAttribute("id") == null)
 	{
 		response.sendRedirect("Login.jsp");
@@ -51,70 +101,67 @@
 		<%  } %>
 	<br/>
 	</div>
-	<br/><br/><br/><br/>
-	<table style="margin-left:20%;">
+	<br/><br/><br/>
+
+	<table class="table-dark test" style="width: 70%; margin: auto; ">
 	<tr>
-	<div class="cards" >
-		<td>
-		<div class="card">
-			<img src="https://cdn0.iconfinder.com/data/icons/business-dual-color-glyph-set-2/128/Address_book-512.png" style="width:20%;height:20%" class="card_image">
-			<div class="content">
-				<a href="ContactDetailsJsp.jsp">View Contacts</a>
-			</div>
-		</div>
+		<td class="polaroid">
+		
+			<img src="https://cdn0.iconfinder.com/data/icons/business-dual-color-glyph-set-2/128/Address_book-512.png"  class="card_image">
+		
+				<a class="anchor-style" href="ContactDetailsJsp.jsp">View Contacts</a>
+			
+	
 		</td>
 		
-		<td>
-		<div class="card">
-			<img src="https://cdn2.iconfinder.com/data/icons/bussiness-management-supersolid/24/add_add_contact_create_new_person_user_add_friend-512.png" style="width:25%;height:10%" class="card_image">
-			<div class="content">
-				<a href="AddContactJsp.jsp">Add New Contact</a>
-			</div>
-		</div>
+		<td class="polaroid">
+		
+			<img src="https://cdn2.iconfinder.com/data/icons/bussiness-management-supersolid/24/add_add_contact_create_new_person_user_add_friend-512.png"  class="card_image">
+			
+				<a class="anchor-style" href="AddContactJsp.jsp">Add New Contact</a>
+			
+	
 		</td>
 		
-		<td>
-		<div class="card">
-			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png" style="width:20%;height:10%" class="card_image">
-			<div class="content">
-				<a href="SearchUser.jsp">Search Users</a>
-			</div>
-		</div>
+		<td class="polaroid">
+		
+			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png"  class="card_image">
+			
+				<a class="anchor-style" href="SearchUser.jsp">Search Users</a>
+			
+		
 		</td>
 	</tr>
 	
 	<tr>
 		
-		<td>
-		<div class="card">
-			<img src="https://icon-library.com/images/connect-icon-png/connect-icon-png-18.jpg" style="width:20%;height:20%" class="card_image">
-			<div class="content">
-				<a href="FriendServlet?option=view">View Friends</a>
-			</div>
-		</div>
+		<td class="polaroid">
+		
+			<img src="https://icon-library.com/images/connect-icon-png/connect-icon-png-18.jpg" class="card_image">
+			
+				<a  class="anchor-style" href="FriendServlet?option=view">View Friends</a>
+			
 		</td>
 		
-		<td>
-		<div class="card">
-			<img src="https://static.thenounproject.com/png/2714894-200.png" style="width:20%;height:20%" class="card_image">
-			<div class="content">
-				<a href="FriendRequestsServlet?option=view">View Friend Requests</a>
-			</div>
-		</div>
+		<td class="polaroid">
+		
+			<img src="https://static.thenounproject.com/png/2714894-200.png"  class="card_image">
+			
+				<a class="anchor-style" href="FriendRequestsServlet?option=view">View Friend Requests</a>
+			
 		</td>
 		
-		<td>
-		<div class="card">
-			<img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/block-person-1446662-1222337.png" style="width:20% ;height:20%" class="card_image">
-			<div class="content">
-				<a href="FriendServlet?option=block">Blocked Users</a>
-			</div>
-		</div>
+		<td class="polaroid">
+		
+			<img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/block-person-1446662-1222337.png" class="card_image">
+			
+				<a class="anchor-style" href="FriendServlet?option=block">Blocked Users</a>
+			
 		</td>
 		
 	</tr>
 
-	</div>
+	
 	
 	</table>
 	  <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
