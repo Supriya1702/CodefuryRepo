@@ -205,8 +205,9 @@
 		</table>
 	</div>
 	</center>
-	<div id="footer" class="fixed-bottom">
-	  <small id="footer-text">&copy; 2021 CodeFury App Monsters</small>
-	</div>
+	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
+
 </body>
 </html>

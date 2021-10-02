@@ -30,7 +30,7 @@
 	
 	%>
 	<ul>
-	  <li><a class="active" href="LoginServlet">Home</a></li>
+	  <li ><a class="active" href="LoginServlet">Home</a></li>
 	  <li style="float:right"><a href="Logout.jsp">Logout</a></li>
 	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 	</ul>
