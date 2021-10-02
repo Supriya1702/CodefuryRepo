@@ -27,7 +27,7 @@
 table{opacity:0.8;}
  td, th {
 	text-align: center;
-	
+
     }
 </style>
 </head>
@@ -87,8 +87,8 @@ table{opacity:0.8;}
 		<h4><%=message  %></h4>
 	<% }%>
    <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
 
 </body>
 </html>

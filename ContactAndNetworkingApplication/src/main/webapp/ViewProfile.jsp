@@ -21,25 +21,25 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
+
 	<style>
 	.aligned { margin-left: 43%;
             display: flex;
             align-items: center;
         }
-           
+
         h1 {
             padding: 10px;
         }
                 td, th {
 	text-align: center;
-	
+
     }
-   
+
 
 
 	</style>
-	
+
 </head>
 <body>
 	<%
@@ -175,6 +175,20 @@
 				</td>
 			</tr>
 			<tr>
+				<td>Country</td>
+				<td>
+					<%
+						if(p.getCountry()!=null) {
+					%>
+					<%=p.getCountry() %>
+					<% }
+						else {
+					%>
+					Not Available
+					<% } %>
+				</td>
+			</tr>
+			<tr>
 				<td>Company</td>
 				<td>
 					<%
@@ -203,11 +217,20 @@
 				</td>
 			</tr>
 		</table>
+		<c:url var="update" value="Update_profile.jsp">
+		</c:url>
+		<a href="Update_profile.jsp"><input type="button" value="Update Profile"></a>
+		<% 
+			String message = (String)request.getAttribute("message");
+			if(message!=null) {
+		%>
+			<h5><%=message %></h5>
+		<% } %>
 	</div>
 	</center>
 	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
 
 </body>
 </html>

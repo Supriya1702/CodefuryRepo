@@ -102,7 +102,7 @@ public class SearchDao implements SearchDaoInterface {
 		List<User> list = new ArrayList<User>();
 		try {
 			p = c.prepareStatement("select u.id,u.fullname from user u where company=? and u.id<>? and u.id not in (select blocked_id from blockedusers b where b.user_id=?) "
-					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?"
+					+ "and u.id not in (select friend_id  from friends where user_id = ?) and u.id not in (select user_id  from friends where friend_id = ?)"
 					+ "and u.id not in (select receiver_id from friendrequest where sender_id=?);");
 			p.setString(1, u.getCompany());
 			p.setInt(2, u.getId());

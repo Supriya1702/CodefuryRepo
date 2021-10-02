@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.contactandnetworkingapplication.dao.FriendDaoInterface;
+import com.contactandnetworkingapplication.exception.DeleteFriendException;
+import com.contactandnetworkingapplication.exception.FetchFriendException;
 import com.contactandnetworkingapplication.model.Friend;
 import com.contactandnetworkingapplication.model.FriendRequest;
 import com.contactandnetworkingapplication.model.User;
@@ -41,18 +43,29 @@ public class FriendServlet extends HttpServlet {
 			User u = new User();
 			u.setId(id);
 			System.out.println("user id a ");
-			List<User> list=ud.viewFriendsDao(u);
+			List<User> list;
+			try {
+				list = ud.viewFriendsDao(u);
+				if(list!=null && list.size()>0) {
+					request.setAttribute("list",list);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					request.setAttribute("message","No friends to show.");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
+					rd.forward(request, response);
+				}
+			} 
+			catch (FetchFriendException e) {
+				System.err.println(e);
+				String message = e.toString();
+				request.setAttribute("message",message);
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
+				rd.forward(request, response);
+			}
 			
-			if(list!=null && list.size()>0) {
-				request.setAttribute("list",list);
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
-				rd.forward(request, response);
-			}
-			else {
-				request.setAttribute("message","No friends to show.");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/Friends.jsp");
-				rd.forward(request, response);
-			}
+			
 		}
 		else if(option.equals("remove")){		//if unFriend option is selected
 			HttpSession session = request.getSession(true);
@@ -65,15 +78,24 @@ public class FriendServlet extends HttpServlet {
 			f.setUser_id(id);
 			    
 			System.out.println(f.getUser_id() + " "+ f.getFriend_id());
-			int res=ud.removeFriend(f);
-			
-			if(res==1) {
-				request.setAttribute("message","Friend Removed");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendServlet?option=view");
-				rd.forward(request, response);
-			}
-			else {
-				request.setAttribute("message","Was unable to Remove Friend. Please try again.");
+			int res;
+			try {
+				res = ud.removeFriend(f);
+				if(res==1) {
+					request.setAttribute("message","Friend Removed");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendServlet?option=view");
+					rd.forward(request, response);
+				}
+				else {
+					request.setAttribute("message","Friend with the required name not found.");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendServlet?option=view");
+					rd.forward(request, response);
+				}
+			} 
+			catch (DeleteFriendException e) {
+				System.err.println(e);
+				String message = e.toString();
+				request.setAttribute("message",message);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendServlet?option=view");
 				rd.forward(request, response);
 			}

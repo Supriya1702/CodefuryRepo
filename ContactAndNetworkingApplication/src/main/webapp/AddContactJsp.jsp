@@ -21,7 +21,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
+
 <style>
 
 table {
@@ -46,9 +46,9 @@ input,select {
 td,th {
 	text-align: center;
 }
-        
-        </style>	
-	
+
+        </style>
+
 </head>
 
 <body>
@@ -65,7 +65,7 @@ td,th {
 	  		<li style="float:right"><a href="Logout.jsp">Logout</a></li>
 	  		<li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 		</ul>
-       <div  class="aligned" align="center" ><img src="images/add_contact_img.png" style="width:70px;"><h1 style="color:#0066A2; font-weight:bold;float:left">Add Contact</h1></div> 
+       <div  class="aligned" align="center" ><img src="images/add_contact_img.png" style="width:70px;"><h1 style="color:#0066A2; font-weight:bold;float:left">Add Contact</h1></div>
         <form action="ContactServlet" method="post">
         
             <table class="table table-dark table-bordered table-hover"
@@ -122,14 +122,12 @@ td,th {
                 
                 <tr><td colspan="2"><input class="btn btn-primary" type="submit" value="ADD CONTACT" /></td></tr>
             </table>
-           
-           
-            
+
              <div style="color:green ;margin-left:45%; display:none;"><h4> ${ message }</h4></div>
            </form>
          <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
 
     </body>
 

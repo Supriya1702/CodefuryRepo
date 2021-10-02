@@ -18,26 +18,26 @@ li{font-size: 1.5em;color:white;padding:10px;}
 </head>
 <body >
 <div style="font-size:50px;text-align:center;color:white">Welcome to Let's Connect</div>
-     
+
      <div style=" width:40%;float:right;margin-top:50px;font-family:Georgia">
-		
-		<p > A world which allows you to sign up for and also to connect with your friends and  work colleagues . The story does not end here , you can also connect to new people all around the globe.  
+
+		<p > A world which allows you to sign up for and also to connect with your friends and  work colleagues . The story does not end here , you can also connect to new people all around the globe.
 		It is user friendly and completely free of cost, thus being open to all.<br>
 		<br>Sign Up !! today to dive deep into the amazing world of Let's Connect.</p><br>
-	
-		
-		 
+
+
+
 			<ul style="align:right;">
 			<li><a href="RegistrationPage.jsp">Register</a></li>
 			<li><a href="Login.jsp">Login</a></li>
 			<li><a href="AdminLogin.jsp">Admin</a></li>
 			</ul>
-			
-		  
+
+
 	</div>
         <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
-  
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
+
 </body>
 </html>

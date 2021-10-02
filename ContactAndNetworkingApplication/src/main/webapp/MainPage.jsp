@@ -24,7 +24,7 @@ th,td{
 
 border-radius: 10px;
  }
- 
+
  .anchor-style {
      color: #000;
      text-transform: uppercase;
@@ -106,66 +106,66 @@ table.test {
 	<table class="table-dark test" style="width: 70%; margin: auto; ">
 	<tr>
 		<td class="polaroid">
-		
+
 			<img src="https://cdn0.iconfinder.com/data/icons/business-dual-color-glyph-set-2/128/Address_book-512.png"  class="card_image">
-		
+
 				<a class="anchor-style" href="ContactDetailsJsp.jsp">View Contacts</a>
-			
-	
+
+
 		</td>
 		
 		<td class="polaroid">
-		
+
 			<img src="https://cdn2.iconfinder.com/data/icons/bussiness-management-supersolid/24/add_add_contact_create_new_person_user_add_friend-512.png"  class="card_image">
-			
+
 				<a class="anchor-style" href="AddContactJsp.jsp">Add New Contact</a>
-			
-	
+
+
 		</td>
 		
 		<td class="polaroid">
-		
+
 			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png"  class="card_image">
-			
+
 				<a class="anchor-style" href="SearchUser.jsp">Search Users</a>
-			
-		
+
+
 		</td>
 	</tr>
 	
 	<tr>
 		
 		<td class="polaroid">
-		
+
 			<img src="https://icon-library.com/images/connect-icon-png/connect-icon-png-18.jpg" class="card_image">
-			
+
 				<a  class="anchor-style" href="FriendServlet?option=view">View Friends</a>
-			
+
 		</td>
 		
 		<td class="polaroid">
-		
+
 			<img src="https://static.thenounproject.com/png/2714894-200.png"  class="card_image">
-			
+
 				<a class="anchor-style" href="FriendRequestsServlet?option=view">View Friend Requests</a>
-			
+
 		</td>
 		
 		<td class="polaroid">
-		
+
 			<img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/block-person-1446662-1222337.png" class="card_image">
-			
+
 				<a class="anchor-style" href="FriendServlet?option=block">Blocked Users</a>
-			
+
 		</td>
 		
 	</tr>
 
-	
+
 	
 	</table>
 	  <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-      </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+      </div>
 </body>
 </html>

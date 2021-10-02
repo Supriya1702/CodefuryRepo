@@ -13,6 +13,8 @@ import com.contactandnetworkingapplication.dao.SearchDao;
 import com.contactandnetworkingapplication.dao.SearchDaoInterface;
 import com.contactandnetworkingapplication.dao.SendFriendRequestDao;
 import com.contactandnetworkingapplication.dao.SendFriendRequestDaoInterface;
+import com.contactandnetworkingapplication.dao.UpdateDao;
+import com.contactandnetworkingapplication.dao.UpdateDaoInterface;
 
 public class DaoFactory {
 
@@ -43,5 +45,9 @@ public class DaoFactory {
 
 	public static BlockeUserdDaoInterface createBlockedDaoObject() {
 		return new BlockedUserDao();
+	}
+
+	public static UpdateDaoInterface createUpdateObject() {
+		return new UpdateDao();
 	}
 }

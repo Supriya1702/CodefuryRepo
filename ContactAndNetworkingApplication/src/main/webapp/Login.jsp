@@ -13,11 +13,11 @@ body{
 	background-image: url("images/bg.jpg");
     background-color: #cccccc;
    }
-   
-   <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
+
+   <link rel="stylesheet" type="text/css" href="css/footerstyles.css">
 </style>
 </head>
-<body> 
+<body>
 	<div class="container" style="opacity:0.9;">
 	  <div class="row col-md-7 col-md-offset-3">
 	    <div class="panel panel-primary" style="margin-top:30%; margin-bottom:50px;">
@@ -56,12 +56,12 @@ body{
          <div >&nbsp;</div>
          
 	  <div style="text-align:center; color:red ; font-size:1.2em">${ message }</div>
-         
+
 	</div>
 	 <a href="HomePage.jsp" style="color:black;font-weight:bold; font-size:15px; text-align:center;">Go back to Home Page</a>
-	 
+
    <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
 </body>
 </html>

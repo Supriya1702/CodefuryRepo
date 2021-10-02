@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.contactandnetworkingapplication.dao.FriendRequestsDaoInterface;
 import com.contactandnetworkingapplication.dao.RegistrationDaoInterface;
+import com.contactandnetworkingapplication.exception.FetchFriendRequestsException;
 import com.contactandnetworkingapplication.model.FriendRequest;
 import com.contactandnetworkingapplication.model.User;
 import com.contactandnetworkingapplication.utility.DaoFactory;
@@ -40,15 +41,24 @@ public class FriendRequestsServlet extends HttpServlet {
 			int id=(int) session.getAttribute("id");
 			User u = new User();
 			u.setId(id);
-			List<FriendRequest> list=ud.viewFriendRequestsDao(u);
-			
-			if(list.size()>0) {
-				request.setAttribute("list",list);
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequests.jsp");
-				rd.forward(request, response);
-			}
-			else {
-				request.setAttribute("message","No friend requests to show.");
+			List<FriendRequest> list;
+			try {
+				list = ud.viewFriendRequestsDao(u);
+				if(list.size()>0) {
+					request.setAttribute("list",list);
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequests.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					request.setAttribute("message","No friend requests to show.");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequests.jsp");
+					rd.forward(request, response);
+				}
+			} 
+			catch (FetchFriendRequestsException e) {
+				System.err.println(e);
+				String message = e.toString();
+				request.setAttribute("message",message);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FriendRequests.jsp");
 				rd.forward(request, response);
 			}

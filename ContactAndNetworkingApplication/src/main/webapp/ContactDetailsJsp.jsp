@@ -92,9 +92,9 @@ th {
  <div  class="aligned" align="center" ><img src="images/contact_list_2.jfif" style="width:100px;"><h1 style="color:#0066A2; font-weight:bold;">My Contacts List</h1></div>
 	
 	<div class="allContacts">
-	
-		
-	
+
+
+
 
 		<table class="table table-dark table-bordered table-hover" style="width: 80%; margin: auto;">
 			<tr>
@@ -115,52 +115,52 @@ th {
 				<td><input type="checkbox" id="chbox" class="selectedContact" onclick="deleteContact()" value=<%=c.getContact_id()%>></td>
 				<td><button class="btn btn-primary" id="<%=butId%>"	onclick="showDetails(<%=c.getContact_id()%>)">View Details</button></td>
 			</tr>
-			
+
 			<tr  style="display:none" id=<%= c.getContact_id() %>>
-	  		
+
 			<td colspan="4">
-			
+
  	       <ul style = "Background:White; class="list-group">
  	        <li  class = "listItem list-group-item list-group-item-action list-group-item-dark"><B><u>DETAILS</u> </B></li>
-			<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Phone No : </B><%= (c.getPhone_no().equals("")) ? "Not Available" :  c.getPhone_no() %></li> 
-	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Gender : </B><%= (c.getGender().equals("")) ? "Not Available" :c.getGender() %></li> 
-	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Date Of Birth : </B><%= (c.getDateOfBirth()==null) ? "Not Available" :c.getDateOfBirth()%></li> 
+			<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Phone No : </B><%= (c.getPhone_no().equals("")) ? "Not Available" :  c.getPhone_no() %></li>
+	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Gender : </B><%= (c.getGender().equals("")) ? "Not Available" :c.getGender() %></li>
+	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Date Of Birth : </B><%= (c.getDateOfBirth()==null) ? "Not Available" :c.getDateOfBirth()%></li>
 	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Address : </B><%= (c.getAddress().equals("")) ? "Not Available" :c.getAddress()%></li>
-	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>City : </B><%= (c.getCity().equals("")) ? "Not Available" :c.getCity()%></li> 
+	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>City : </B><%= (c.getCity().equals("")) ? "Not Available" :c.getCity()%></li>
 	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>State : </B><%= (c.getState().equals("")) ? "Not Available" :c.getState()%></li>
 	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Country : </B><%= (c.getCountry().equals("")) ? "Not Available" :c.getCountry()%></li>
 	  		<li class = "listItem list-group-item list-group-item-action list-group-item-dark"><B>Company : </B><%= (c.getCompany().equals("")) ? "Not Available" :c.getCompany()%></li>
 	  		</ul>
-	  		
+
 	  		</td>
-	  		
+
 	  	</tr>
 			<%
 				}
 			%>
-		
-			
+
+
 			</table>
-	     
+
 	     <div style="margin-left:43%;margin-top:10px;margin-bottom:40px;">
 	     <form action="DeleteContact" method="post" style="float:left;">
 			<input type="text" style="display: none" name="labelcon" id="labelcon" value="0">
 			<button class="btn btn-primary" type="submit">Delete Selected</button></form>&nbsp;&nbsp;
 			<button class="btn btn-primary" type="button" onclick="uncheckAll()">Uncheck Selected</button>
-			
+
 			</div>
 			</div>
-		
+
 
 
 	     <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
 
-		
+
 		<jsp:setProperty property="*" name="contact" />
 
-		
+
 <script> function showDetails(contact_id){
 	console.log("in showDetails");
 	if(document.getElementById(contact_id).style.display=="none"){
@@ -173,7 +173,7 @@ th {
 	}
 }
 
-		
+
  function deleteContact(){
 	var list = document.getElementsByClassName("selectedContact");
 	var deleteContacts = [];
@@ -200,7 +200,7 @@ th {
  function uncheckAll(){
      console.log("inside");
 	 $('.selectedContact').prop('checked', false);
-	 
+
 	 }
 </script>
 </body>

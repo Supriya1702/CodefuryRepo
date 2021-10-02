@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.contactandnetworkingapplication.exception.DeleteFriendException;
+import com.contactandnetworkingapplication.exception.FetchFriendException;
 import com.contactandnetworkingapplication.model.Friend;
 import com.contactandnetworkingapplication.model.User;
 
 public class FriendDao implements FriendDaoInterface {
 
 	@Override
-	public List<User> viewFriendsDao(User u) {		//fetching friends from friends table 
+	public List<User> viewFriendsDao(User u) throws FetchFriendException {		//fetching friends from friends table 
 		ConnectionUtil c = new ConnectionUtil();
 		Connection conn = c.createConnection();
 		PreparedStatement p=null;
@@ -34,8 +36,9 @@ public class FriendDao implements FriendDaoInterface {
 				list.add(res);
 			}
 			return list;
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} 
+		catch (SQLException e) {
+			throw new FetchFriendException();
 		}finally {
 			try {
 				conn.close();
@@ -43,12 +46,10 @@ public class FriendDao implements FriendDaoInterface {
 				e.printStackTrace();
 			}
 		}
-		
-		return null;
 	}
 
 	@Override
-	public int removeFriend(Friend f) {		//removing from friend table
+	public int removeFriend(Friend f) throws DeleteFriendException {		//removing from friend table
 		ConnectionUtil a = new ConnectionUtil();
 		Connection con = a.createConnection();
 		try {
@@ -68,7 +69,7 @@ public class FriendDao implements FriendDaoInterface {
 			
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			throw new DeleteFriendException();
 		}
 		finally {
 			try {

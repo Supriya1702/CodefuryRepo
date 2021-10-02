@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.contactandnetworkingapplication.exception.FetchFriendRequestsException;
 import com.contactandnetworkingapplication.model.FriendRequest;
 import com.contactandnetworkingapplication.model.User;
 
 public class FriendRequestsDao implements FriendRequestsDaoInterface {
 
 	@Override	
-	public List<FriendRequest> viewFriendRequestsDao(User u) {		//fetching from friend requests table
+	public List<FriendRequest> viewFriendRequestsDao(User u) throws FetchFriendRequestsException {		//fetching from friend requests table
 		ConnectionUtil a = new ConnectionUtil();
 		Connection c=a.createConnection();
 		PreparedStatement p=null;
@@ -30,13 +31,13 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 				res.setReceiver_id(rs.getInt(2));
 				res.setSender_id(rs.getInt(3));
 				res.setSender_name(rs.getString(4));
-				System.out.println(res.getFriend_request_pk()+ " " + res.getReceiver_id() + " " + res.getSender_id() + " " + res.getSender_name());
+				//System.out.println(res.getFriend_request_pk()+ " " + res.getReceiver_id() + " " + res.getSender_id() + " " + res.getSender_name());
 				list.add(res);
 			}
 			return list;
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
+			throw new FetchFriendRequestsException();
 		}
 		finally {
 			try {
@@ -46,7 +47,6 @@ public class FriendRequestsDao implements FriendRequestsDaoInterface {
 				e.printStackTrace();
 			}
 		}
-		return null;
 	}
 
 	@Override

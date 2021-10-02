@@ -31,7 +31,7 @@
 table{ opacity:0.8;}
 td, th {
 	text-align: center;
-	
+
     }
 </style>
 
@@ -51,14 +51,14 @@ td, th {
 	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 	</ul>
 	<h1 align ="center" style="color:#0066A2; font-weight:bold;">Search Users</h1>
-	<form action="SearchServlet" method="post" style="margin-left:37%;margin-bottom:10px;">  
-	    
+	<form action="SearchServlet" method="post" style="margin-left:37%;margin-bottom:10px;">
+
 	    <select name="select" id="select"  style="width:20%;height:30px;" >
 		    <option value="city">City</option>
 		    <option value="state">State</option>
 		    <option value="company">Company</option>
 	    </select>
-	    <input type="text" name="search" style="width:20%;height:30px;" > 
+	    <input type="text" name="search" style="width:20%;height:30px;" >
 	 	<input class="btn btn-primary" type="submit" value="Search" >
 	</form>
 	<center>
@@ -88,7 +88,7 @@ td, th {
 		<tr>
 			<td><%=u.getName() %></td>
 			<td>
-				<input class="btn btn-primary" type="button" onclick="window.location.href='${send}'" value="Send Friend Request">	
+				<input class="btn btn-primary" type="button" onclick="window.location.href='${send}'" value="Send Friend Request">
 			</td>
 			<td>
 				<input class="btn btn-primary" type="button" onclick="window.location.href='${block}'" value="Block User">
@@ -110,11 +110,11 @@ td, th {
 	<% } %>
 	
 	</center> 
-	
-	
+
+
 	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
 
 </body>
 </html>

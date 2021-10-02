@@ -23,22 +23,22 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
-	
+
+
 	<style>
 	.aligned { margin-left: 43%;
             display: flex;
             align-items: center;
         }
-           
+
         h1 {
             padding: 10px;
         }
-        
+
            td, th {
 	text-align: center;
 	</style>
-	
+
 </head>
 <body>
 	<%
@@ -82,8 +82,8 @@
 		<h4><%=message  %></h4>
 	<% }%>
 	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+           </div>
 
 </body>
 </html>
