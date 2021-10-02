@@ -8,8 +8,8 @@
 <!-- <link href="AdminLoginCss.css" rel="stylesheet" type="text/css" /> -->
 <link href="css/background.css" rel="stylesheet" type="text/css" />
 <title>Admin Page</title>
-<link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
-<link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
+<link rel="stylesheet" type="text/css" href="css/navbarstyles.css">
+<link rel="stylesheet" type="text/css" href="css/footerstyles.css">
 
 </head>
 
@@ -20,7 +20,7 @@
 	</ul>
 	<center>
 	<h2>	Hello <%= request.getAttribute("name")%> : <br>
-	
+
 	Your Details : <br>
 	Email : <%= request.getAttribute("email") %> <br>
 	Phone No : <%= request.getAttribute("phone") %> <br>

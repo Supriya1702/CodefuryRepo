@@ -18,19 +18,19 @@
 	</ul>
 <center>
 
-		<% 
+		<%
 			HashMap <Integer , String> hp = (HashMap <Integer , String>)request.getAttribute("info");
 			String message = (String)request.getAttribute("message");
 			if(hp != null){
 				%>
 		<table>
   	<tr>
-  		
+
   		<th>Id</th>
   		<th>Location</th>
   		<th>Select</th>
-  	</tr>			
-				
+  	</tr>
+
 		<%			for(HashMap.Entry<Integer, String> entry : hp.entrySet()) {
 					Integer id = entry.getKey();
 					String location = entry.getValue();
@@ -39,20 +39,20 @@
 	  		<td><%= id %></td>
 	  		<td><%= location %></td>
 	  		<td><input type="checkbox" id ="chbox" class ="selectedContact" onclick="deleteContact()" value=<%=  id %>></td>
-	  		   	</tr>	
+	  		   	</tr>
 				<br>
 	<% 		} %>
-			
-			
+
+
  </table>
  			<form action="AdminServlet?option=disable" method="post">
     		<label><input type="text" style="display:none" name="labelcon" id="labelcon" value="0" ></label>
 			<br> <br>	<button  type="submit" >Delete Selected</button>
-  			</form>		
+  			</form>
 	<%
 				}
 				else {
-		 	
+
 		%>
 		<h4><%= message  %></h4>
 	<% }
@@ -78,7 +78,7 @@ function deleteContact(){
 	}
 	else{return false;}
 	console.log(delUse);
-	
+
  }
 </script>
 	<footer id="footer">
