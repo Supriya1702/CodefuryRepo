@@ -58,7 +58,7 @@
 	<%
 		User p = (User) session.getAttribute("user");		
 	%>
-	 <div  class="aligned" align="center" ><img src="images/profile_img.png" style="width:70px;"><h1 style="color:#0066A2; font-weight:bold;">Profile</h1></div>
+	 <div  class="aligned" align="center" ><img src="images/profile_img.png" style="width:70px;border-radius:50%;"><h1 style="color:#343a40; font-weight:bold;">Profile</h1></div>
 	<center>
 	<div>
 		<table class="table table-dark table-bordered table-hover" style="width: 60%; margin: auto; opacity:0.8;">
@@ -220,7 +220,7 @@
 		<c:url var="update" value="Update_profile.jsp">
 		</c:url>
 		<a href="Update_profile.jsp"><input type="button" value="Update Profile"></a>
-		<% 
+		<%
 			String message = (String)request.getAttribute("message");
 			if(message!=null) {
 		%>
@@ -228,9 +228,9 @@
 		<% } %>
 	</div>
 	</center>
-	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small>
-           </div>
+	   <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
 
 </body>
 </html>

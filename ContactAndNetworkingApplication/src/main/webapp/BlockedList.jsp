@@ -51,7 +51,7 @@ td, th {
 			if(hp != null){
 				%>
 				<center>
-				<h1 style="color:#0066A2; font-weight:bold;">Blocked Users</h1>
+				<h1 style="color:#343a40; font-weight:bold;">Blocked Users</h1>
 				<table border="5px" class="table table-dark table-bordered table-hover" style="width: 80%; margin: auto;">
 		<%			for(HashMap.Entry<Integer, String> entry : hp.entrySet()) {
 					Integer id = entry.getKey();
@@ -75,9 +75,9 @@ td, th {
 		<h4><%= message  %></h4>
 	<% }
 	%>
-	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small>
-           </div>
+	   <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
 
 </body>
 </html>

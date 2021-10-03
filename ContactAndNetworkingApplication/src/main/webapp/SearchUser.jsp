@@ -50,9 +50,9 @@ td, th {
 	  <li style="float:right"><a href="Logout.jsp">Logout</a></li>
 	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 	</ul>
-	<h1 align ="center" style="color:#0066A2; font-weight:bold;">Search Users</h1>
-	<form action="SearchServlet" method="post" style="margin-left:37%;margin-bottom:10px;">
-
+	<h1 align ="center" style="color:#343a40; font-weight:bold;">Search Users</h1>
+	<form action="SearchServlet" method="post" style="margin-left:37%;margin-bottom:10px;">  
+	    
 	    <select name="select" id="select"  style="width:20%;height:30px;" >
 		    <option value="city">City</option>
 		    <option value="state">State</option>
@@ -112,8 +112,8 @@ td, th {
 	</center> 
 
 
-	   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small>
+	   <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
            </div>
 
 </body>

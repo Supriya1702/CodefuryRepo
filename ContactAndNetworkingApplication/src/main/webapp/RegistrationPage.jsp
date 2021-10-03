@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 body{
-	background-image: url("images/bg.jpg");
+	background-image: url("images/admin.jpg");
     background-color: #cccccc;
    }
    label{
@@ -25,14 +25,13 @@ body{
 </head>
 <body>
 
-<div class="container" style="width:100%; height:70% ;opacity:0.9;">
+<div class="container" style="width:100%; height:70% ;background-color: transparent;">
        <div class="row col-md-7 col-md-offset-3">
 
         <div class="panel panel-primary" style="margin-top:50px; margin-bottom:50px;">
            <div class="panel-heading text-center" style="margin-top:5px;">
                <h1>Registration Form</h1>
            </div>
-           <div> ${ message }</div>
            <div class="panel-body">
             <form id="userform" style="width:100%; margin:5px;" onsubmit="return validateform()" action="RegistrationServlet" method="post">
               
@@ -129,16 +128,16 @@ body{
          </form>
          
            </div>
-
+          
 
         </div>
 
        </div>
 
     </div>
-    <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small>
-           </div>
+    <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
 
 <script src="js/registrationValidations.js"></script> 
 </body>

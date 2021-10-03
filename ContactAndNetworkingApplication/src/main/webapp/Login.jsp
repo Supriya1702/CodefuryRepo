@@ -10,15 +10,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 body{
-	background-image: url("images/bg.jpg");
+	background-image: url("images/admin.jpg");
     background-color: #cccccc;
    }
-
-   <link rel="stylesheet" type="text/css" href="css/footerstyles.css">
+   <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
 </style>
+<title>Login</title>
 </head>
-<body>
-	<div class="container" style="opacity:0.9;">
+<body> 
+	<div class="container" >
 	  <div class="row col-md-7 col-md-offset-3">
 	    <div class="panel panel-primary" style="margin-top:30%; margin-bottom:50px;">
            <div class="panel-heading text-center" style="margin-top:5px;">
@@ -58,8 +58,8 @@ body{
 	  <div style="text-align:center; color:red ; font-size:1.2em">${ message }</div>
 
 	</div>
-	 <a href="HomePage.jsp" style="color:black;font-weight:bold; font-size:15px; text-align:center;">Go back to Home Page</a>
-
+	 <a href="HomePage.jsp" style="color:white;font-weight:bold; font-size:15px; text-align:center;">Go back to Home Page</a>
+	 
    <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
              <small>&copy; 2021 CodeFury App Monsters</small>
            </div>

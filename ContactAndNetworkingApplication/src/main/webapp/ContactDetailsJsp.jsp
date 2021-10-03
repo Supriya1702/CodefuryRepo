@@ -24,7 +24,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="css/background.css" rel="stylesheet" type="text/css" />
+<link href="css/background.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="css/navbarstyles.css">
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css">
 
@@ -89,7 +89,7 @@ th {
 		<c:param name="option" value="delete"></c:param>
 		<c:param name="listContact2"></c:param>
 	</c:url>
- <div  class="aligned" align="center" ><img src="images/contact_list_2.jfif" style="width:100px;"><h1 style="color:#0066A2; font-weight:bold;">My Contacts List</h1></div>
+ <div  class="aligned" align="center" ><img src="images/contact_list_2.jfif" style="width:100px;border-radius:50%;"><h1 style="color:#343a40;font-weight:bold; border-radius: 50%;">My Contacts List</h1></div>
 	
 	<div class="allContacts">
 
@@ -153,7 +153,7 @@ th {
 
 
 
-	     <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
+	     <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
              <small>&copy; 2021 CodeFury App Monsters</small>
            </div>
 

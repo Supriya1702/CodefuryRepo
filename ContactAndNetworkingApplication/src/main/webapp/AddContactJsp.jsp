@@ -65,7 +65,7 @@ td,th {
 	  		<li style="float:right"><a href="Logout.jsp">Logout</a></li>
 	  		<li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 		</ul>
-       <div  class="aligned" align="center" ><img src="images/add_contact_img.png" style="width:70px;"><h1 style="color:#0066A2; font-weight:bold;float:left">Add Contact</h1></div>
+       <div  class="aligned" align="center" ><img src="images/add_contact_img.png" style="width:70px;border-radius:50%;"><h1 style="color:#343a40; font-weight:bold;float:left">Add Contact</h1></div> 
         <form action="ContactServlet" method="post">
         
             <table class="table table-dark table-bordered table-hover"
@@ -125,9 +125,9 @@ td,th {
 
              <div style="color:green ;margin-left:45%; display:none;"><h4> ${ message }</h4></div>
            </form>
-         <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small>
-           </div>
+         <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
 
     </body>
 

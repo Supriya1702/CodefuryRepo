@@ -45,7 +45,7 @@ table{opacity:0.8;}
 	  <li style="float:right"><a href="Logout.jsp">Logout</a></li>
 	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 	</ul>
-	<h1 align ="center" style="color:#0066A2; font-weight:bold;"> Pending Friend Requests</h1>
+	<h1 align ="center" style="color:#343a40; font-weight:bold;"> Pending Friend Requests</h1>
 	
 	<% 
 		List<FriendRequest> list=(List<FriendRequest>)request.getAttribute("list");
@@ -86,9 +86,9 @@ table{opacity:0.8;}
 	%>
 		<h4><%=message  %></h4>
 	<% }%>
-   <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small>
-           </div>
+   <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div> 
 
 </body>
 </html>

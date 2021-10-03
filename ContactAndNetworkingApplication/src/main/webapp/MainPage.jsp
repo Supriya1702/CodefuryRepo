@@ -11,7 +11,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Main page</title>
-<link href="css/background.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/background.css" rel="stylesheet" type="text/css" /> -->
 <link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -66,7 +66,26 @@ table.test {
   border-spacing: 35px;
   *border-collapse: expression('separate', cellSpacing='10px');
 }
+body{
+width: 100vw;
+min-height: 100vh;
+background-color: #36096d;
+background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+}
 
+.user-hello{
+
+background-color:transparent
+height:100px;
+width:100%;
+color:#343a40;
+text-align: center;
+padding: 18px 0;
+font-family:Vogue;
+font-weight:bold;
+
+
+}
 </style>
 </head>
 <body>
@@ -88,8 +107,8 @@ table.test {
 		User res = (User)request.getAttribute("User");
 	%>
 	<div>
-		<h1>Welcome <%= res.getName() %></h1><br>
-		<%
+		<h1 class="user-hello">Welcome <%= res.getName() %></h1><br>
+	<%
 			Date date1 = new Date();
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			String s = formatter.format(date1);
@@ -97,8 +116,10 @@ table.test {
 			if(s.equals(current_date)) {
 				
 		%>
-				<h1>Wish you a very Happy Birthday <%= res.getName() %></h1>
-		<%  } %>
+				<div class="user-hello" style="font-family:italics;font-weight:bold;"><h1>Wishing you a very Happy Birthday <%= res.getName() %>!</h1></div>
+	<%  } %>
+		
+
 	<br/>
 	</div>
 	<br/><br/><br/>
@@ -161,11 +182,9 @@ table.test {
 		
 	</tr>
 
-
-	
 	</table>
-	  <div class=" text-right fixed-bottom" style="background-color:#0066A2;height:30px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small>
-      </div>
+	  <div class=" text-right fixed-bottom" style="background-color:#343a40;height:40px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+      </div> 
 </body>
 </html>
