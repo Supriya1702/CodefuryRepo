@@ -12,14 +12,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style> form{}
 p{font-size: 1.5em;color:white;}
-li{font-size: 1.5em;color:white;padding:10px;}
+li{font-size: 1.5em;padding:10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 10px; width:200px;; background-color:white;text-align:center;margin-top:10px;}
+a{color:color:#0066A2;}
+
+.title{
+font-size:50px;
+text-align:center;
+color:white;
+margin-top:20px;
+font-family:Georgia;
+}
 
 </style>
 </head>
 <body >
-<div style="font-size:50px;text-align:center;color:white">Welcome to Let's Connect</div>
+<div class="title">Welcome to Let's Connect</div>
 
-     <div style=" width:40%;float:right;margin-top:50px;font-family:Georgia">
+     <div style=" width:40%;float:right;margin-top:50px;font-family:Georgia;margin-right:40px;">
 
 		<p > A world which allows you to sign up for and also to connect with your friends and  work colleagues . The story does not end here , you can also connect to new people all around the globe.
 		It is user friendly and completely free of cost, thus being open to all.<br>

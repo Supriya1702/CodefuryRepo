@@ -82,7 +82,7 @@ background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
  </table>
  			<form action="AdminServlet?option=disable" method="post">
     		<label><input type="text" style="display:none" name="labelcon" id="labelcon" value="0" ></label>
-			<br> <br>	<button class="btn btn-primary" type="submit" >Disable Users</button>
+			<br> <br>	<button class="btn btn-primary" style="border-color:white;" type="submit" >Disable Users</button>
   			</form>
 	<%
 				}

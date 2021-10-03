@@ -51,14 +51,14 @@ td, th {
 	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 	</ul>
 	<h1 align ="center" style="color:#343a40; font-weight:bold;">Search Users</h1>
-	<form action="SearchServlet" method="post" style="margin-left:37%;margin-bottom:10px;">  
+	<form action="SearchServlet" method="post" style="margin-bottom:10px; background-color:#343a40;text-align:center;height:90px;border-radius:10px;padding-top:20px;width:45%;margin-left:30%; ">  
 	    
-	    <select name="select" id="select"  style="width:20%;height:30px;" >
+	    <select name="select" id="select"  style="width:40%;height:30px;border-radius:10px;" >
 		    <option value="city">City</option>
 		    <option value="state">State</option>
 		    <option value="company">Company</option>
 	    </select>
-	    <input type="text" name="search" style="width:20%;height:30px;" >
+	    <input type="text" name="search" style="width:40%;height:30px;border-radius:10px;" >
 	 	<input class="btn btn-primary" type="submit" value="Search" >
 	</form>
 	<center>
@@ -106,7 +106,7 @@ td, th {
 				message="please enter search criteria above.";
 			System.out.println(message);
 	%>
-	<h4><%=message %></h4>
+	<h3 style="color:white;"><%=message %></h3>
 	<% } %>
 	
 	</center> 

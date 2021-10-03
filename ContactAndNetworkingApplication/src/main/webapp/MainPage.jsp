@@ -11,7 +11,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Main page</title>
-<!-- <link href="css/background.css" rel="stylesheet" type="text/css" /> -->
 <link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -21,7 +20,6 @@
 <style>
 
 th,td{
-
 border-radius: 10px;
  }
 
@@ -75,15 +73,14 @@ background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
 
 .user-hello{
 
-background-color:transparent
-height:100px;
-width:100%;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 10px; background-color:white;text-align:center;margin-top:10px;
+width:30%;
 color:#343a40;
 text-align: center;
 padding: 18px 0;
 font-family:Vogue;
 font-weight:bold;
-
 
 }
 </style>
@@ -106,8 +103,10 @@ font-weight:bold;
 	<%
 		User res = (User)request.getAttribute("User");
 	%>
-	<div>
-		<h1 class="user-hello">Welcome <%= res.getName() %></h1><br>
+	
+		<h1 class="user-hello" style="margin-left:35%;width:30%;">Welcome <%= res.getName() %></h1><br>
+		
+		<div class="user-hello" style="font-family:italics;font-weight:bold;float:left;margin-left:5%;margin-top:5%;">
 		<%
 			LocalDate dt = LocalDate.now();
                         int day = dt.getDayOfMonth();
@@ -123,13 +122,13 @@ font-weight:bold;
                         if(day==user_day && month==user_month) {
 
 		%>
-				<div class="user-hello" style="font-family:italics;font-weight:bold;"><h1>Hey its <%=month_name %> <%=day %>.<br>  Wish you a very Happy Birthday <%= res.getName() %>!!</h1></div>
+			<h1>Hey its <%=month_name %> <%=day %>.<br>  Wish you a very Happy Birthday <%= res.getName() %>!!</h1>
 		<%  } %>
-	<br/>
+	<br><br><br><br>
 	</div>
-	<br/><br/><br/>
 
-	<table class="table-dark test" style="width: 70%; margin: auto; ">
+
+	<table class="table-dark test" style="width: 55%;float:right; margin-right:7%;">
 	<tr>
 		<td class="polaroid">
 
@@ -149,14 +148,7 @@ font-weight:bold;
 
 		</td>
 		
-		<td class="polaroid">
-
-			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png"  class="card_image">
-
-				<a class="anchor-style" href="SearchUser.jsp">Search Users</a>
-
-
-		</td>
+	
 	</tr>
 	
 	<tr>
@@ -177,6 +169,22 @@ font-weight:bold;
 
 		</td>
 		
+		
+		
+	</tr>
+
+
+<tr>
+	<td class="polaroid">
+
+			<img src="https://library.kissclipart.com/20180829/ike/kissclipart-search-user-icon-clipart-computer-icons-user-761033d83b6b74f8.png"  class="card_image">
+
+				<a class="anchor-style" href="SearchUser.jsp">Search Users</a>
+
+
+		</td>
+		
+		
 		<td class="polaroid">
 
 			<img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/block-person-1446662-1222337.png" class="card_image">
@@ -184,9 +192,8 @@ font-weight:bold;
 				<a class="anchor-style" href="FriendServlet?option=block">Blocked Users</a>
 
 		</td>
+		</tr>
 		
-	</tr>
-
 	</table>
 	  <div class=" text-right fixed-bottom" style="background-color:#343a40;height:40px; color:white;padding-right:20px;" >
              <small>&copy; 2021 CodeFury App Monsters</small>

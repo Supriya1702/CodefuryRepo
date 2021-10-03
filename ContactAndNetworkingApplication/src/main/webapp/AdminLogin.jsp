@@ -42,7 +42,7 @@
 <br />
 <p><input type="submit" value="Login" onclick = "validate()" class="btn" ></p>
 </form>
-<center><a href="HomePage.jsp" style="color:white;font-weight:bold; font-size:15px; text-align:center;">Go back to Home Page</a></center>
+<center><a href="HomePage.jsp" style="color:white;font-weight:bold; font-size:15px; text-align:center;margin-left:40px;">Go back to Home Page</a></center>
 
 </body>
 </html>

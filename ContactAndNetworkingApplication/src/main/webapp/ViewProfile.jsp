@@ -219,7 +219,7 @@
 		</table>
 		<c:url var="update" value="Update_profile.jsp">
 		</c:url>
-		<a href="Update_profile.jsp"><input type="button" value="Update Profile"></a>
+		<a href="Update_profile.jsp"><input type="button" class="btn btn-primary" value="Update Profile" style="width:30%; margin-top:20px; border-color: white;"></a>
 		<%
 			String message = (String)request.getAttribute("message");
 			if(message!=null) {

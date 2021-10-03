@@ -113,7 +113,7 @@ th {
 				<td><%=c.getFullName()%></td>
 				<td><%=c.getEmail()%></td>
 				<td><input type="checkbox" id="chbox" class="selectedContact" onclick="deleteContact()" value=<%=c.getContact_id()%>></td>
-				<td><button class="btn btn-primary" id="<%=butId%>"	onclick="showDetails(<%=c.getContact_id()%>)">View Details</button></td>
+				<td><button class="btn btn-primary"  id="<%=butId%>"	onclick="showDetails(<%=c.getContact_id()%>)">View Details</button></td>
 			</tr>
 
 			<tr  style="display:none" id=<%= c.getContact_id() %>>
@@ -145,8 +145,8 @@ th {
 	     <div style="margin-left:43%;margin-top:10px;margin-bottom:40px;">
 	     <form action="DeleteContact" method="post" style="float:left;">
 			<input type="text" style="display: none" name="labelcon" id="labelcon" value="0">
-			<button class="btn btn-primary" type="submit">Delete Selected</button></form>&nbsp;&nbsp;
-			<button class="btn btn-primary" type="button" onclick="uncheckAll()">Uncheck Selected</button>
+			<button class="btn btn-primary" style="border-color: white;" type="submit">Delete Selected</button></form>&nbsp;&nbsp;
+			<button class="btn btn-primary" style="border-color: white;" type="button" onclick="uncheckAll()">Uncheck Selected</button>
 
 			</div>
 			</div>

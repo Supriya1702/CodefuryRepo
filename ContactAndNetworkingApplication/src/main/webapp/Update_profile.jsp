@@ -12,15 +12,30 @@
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css">
 <link rel="stylesheet" type="text/css" href="css/registrationStyles.css">  
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="css/background.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/navbarstyles.css"> 
 <link rel="stylesheet" type="text/css" href="css/footerstyles.css"> 
+<style>
+input,select {
+	width: 90%;
+	color: black;
+}
+td,th {
+	text-align: center;
+}
+.aligned {
+	margin-left: 40%;
+	display: flex;
+	align-items: center;
+}
+
+h1 {
+	padding: 10px;
+}
+</style>
 </head>
 <body>
 <%
@@ -34,9 +49,9 @@
 	  <li style="float:right"><a href="ViewProfile.jsp">Profile</a></li>
 	</ul>
 	<center>
-           <h3>Update Profile</h3>
+            <div  class="aligned"  ><h1 style="color:#343a40; font-weight:bold;float:left">Update Profile</h1></div> 
            <form action="UpdateServlet" method="post">
-           <table>
+           <table class="table table-dark table-bordered table-hover" style="width: 50%; margin: auto; opacity:0.8;">
 			<tr>
 				<input type="hidden" value="<%=p.getEmail() %>" name="user-email">
 				<input type="hidden" value="<%=p.getUsername() %>" name="user-username">
@@ -96,17 +111,17 @@
 			</tr>
 		</table>
 			<br>
-            <input type="submit"  value="Confirm"></input>
+            <input type="submit" style="width:20%;border-color: white;"class="btn btn-primary"  value="Confirm"></input>
             <c:url var="cancel" value="ViewProfile.jsp">
 			</c:url>
-			<input type="button" onclick="window.location.href='${cancel}'" value="Cancel">
+			<input type="button" style="width:20%;border-color: white;"class="btn btn-primary"  onclick="window.location.href='${cancel}'" value="Cancel">
         </form> 
         
         
         </center>        
-    <footer id="footer">
- 		<small id="footer-text">&copy; CodeFury App Monsters</small>
-	</footer>
+   <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
+             <small>&copy; 2021 CodeFury App Monsters</small> 
+           </div>
 <script src="js/registrationValidations.js"></script> 
 </body>
 </html> 
