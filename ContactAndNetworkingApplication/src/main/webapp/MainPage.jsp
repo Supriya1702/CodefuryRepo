@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.time.*" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.ParseException" %>
 <%@page import="com.contactandnetworkingapplication.model.User"%>
@@ -108,18 +108,23 @@ font-weight:bold;
 	%>
 	<div>
 		<h1 class="user-hello">Welcome <%= res.getName() %></h1><br>
-	<%
-			Date date1 = new Date();
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			String s = formatter.format(date1);
-			String current_date = formatter.format(res.getDob());
-			if(s.equals(current_date)) {
-				
-		%>
-				<div class="user-hello" style="font-family:italics;font-weight:bold;"><h1>Wishing you a very Happy Birthday <%= res.getName() %>!</h1></div>
-	<%  } %>
-		
+		<%
+			LocalDate dt = LocalDate.now();
+                        int day = dt.getDayOfMonth();
+                        int month = dt.getMonthValue();
+                        Month month_name = dt.getMonth();
 
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        String s = formatter.format(res.getDob());
+                        LocalDate user_date = LocalDate.parse(s);
+                        int user_day = user_date.getDayOfMonth();
+                        int user_month = user_date.getMonthValue();
+
+                        if(day==user_day && month==user_month) {
+
+		%>
+				<div class="user-hello" style="font-family:italics;font-weight:bold;"><h1>Hey its <%=month_name %> <%=day %>.<br>  Wish you a very Happy Birthday <%= res.getName() %>!!</h1></div>
+		<%  } %>
 	<br/>
 	</div>
 	<br/><br/><br/>
@@ -184,7 +189,7 @@ font-weight:bold;
 
 	</table>
 	  <div class=" text-right fixed-bottom" style="background-color:#343a40;height:40px; color:white;padding-right:20px;" >
-             <small>&copy; 2021 CodeFury App Monsters</small> 
-      </div> 
+             <small>&copy; 2021 CodeFury App Monsters</small>
+      </div>
 </body>
 </html>
