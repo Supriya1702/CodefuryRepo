@@ -123,7 +123,13 @@ font-weight:bold;
 
 		%>
 			<h1>Hey its <%=month_name %> <%=day %>.<br>  Wish you a very Happy Birthday <%= res.getName() %>!!</h1>
-		<%  } %>
+		<%  			} 
+                        else {
+		%>
+			<h1>It's <%=dt.getMonth() + " " + dt.getDayOfMonth() %> today.</h1>
+		<%              }
+		
+		%>
 	<br><br><br><br>
 	</div>
 
