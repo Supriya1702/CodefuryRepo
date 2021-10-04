@@ -126,18 +126,20 @@ body{
         </div>
         
          </form>
-         
+         	
            </div>
-          
-
+        <div class="row col-md-7 col-md-offset-3">
+          	<a href="HomePage.jsp" style="color:black;font-weight:bold; font-size:15px; text-align:center;">Go back to Home Page</a>
+		</div>	
         </div>
-
+		
        </div>
-
+		
     </div>
+    
     <div class=" text-right fixed-bottom" style="background-color:#343a40;height:30px; color:white;padding-right:20px;" >
              <small>&copy; 2021 CodeFury App Monsters</small> 
-           </div> 
+    </div> 
 
 <script src="js/registrationValidations.js"></script> 
 </body>
